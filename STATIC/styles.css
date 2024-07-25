@@ -1,0 +1,76 @@
+body {
+    display: flex;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    margin-left: 250px; /* Ajuste la largeur du menu */
+    transition: margin-left 0.3s;
+    overflow: auto;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.header .subtitle {
+    background-color: #b0b0b0;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.main-content {
+    display: flex;
+    margin-top: 20px;
+    padding: 0 20px;
+}
+
+.subtitle {
+    background-color: #b0b0b0;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.main-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.floating-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    line-height: 1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 1000;
+    padding: 0;
+    padding-bottom: 5px; /* Ajustez cette valeur pour modifier la position verticale */
+}
+
+.floating-btn:hover {
+    background-color: #0056b3; /* Changez cette couleur selon vos besoins */
+}

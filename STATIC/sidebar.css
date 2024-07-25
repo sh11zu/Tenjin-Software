@@ -1,0 +1,245 @@
+/* sidebar.css */
+
+.sidebar {
+    background-color: #080d24;
+    color: white;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: width 0.3s;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height: 100vh;
+}
+
+.sidebar.collapsed {
+    width: 80px; /* Ajuste la largeur du menu réduit */
+}
+
+.sidebar.no-transition {
+    transition: none !important;
+}
+
+.content.no-transition {
+    transition: none !important;
+}
+
+.logo-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    height: 100px; /* Maintient la hauteur du conteneur */
+    margin-bottom: 90px;
+}
+
+.sidebar.collapsed .logo-container {
+    width: 80px; /* Assure que le conteneur prend toute la largeur réduite */
+}
+
+.logo {
+    width: 150px;
+    cursor: pointer;
+    transition: width 0.3s; /* Ajoute une transition pour la taille du logo */
+    margin-top: 90px;
+    margin-right: 7px;
+}
+
+.sidebar.collapsed .logo {
+    width: 60px; /* Réduit la taille du logo quand le menu est réduit */
+    margin-right: 2px;
+    margin-top: 50px;
+}
+
+.sidebar.collapsed .menu-item {
+    justify-content: flex-start; /* Maintient l'alignement des icônes dans le menu réduit */
+    padding-left: 20px; /* Ajuste la position des icônes dans le menu réduit */
+    display: flex;
+}
+
+.sidebar.collapsed .menu-title {
+    display: none; /* Cache les titres des menus dans le menu réduit */
+}
+
+.sidebar.collapsed .menu-dropdown-title {
+    display: none; /* Cache les titres des menus dans le menu réduit */
+}
+
+.toggle-btn {
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    bottom: 30px;
+    right: 30px; /* Positionné à droite */
+}
+
+.toggle-btn.active, .toggle-btn:hover {
+    font-weight: bold;
+    color: #ff0f8b;
+}
+
+.toggle-btn.active::before, .toggle-btn:hover::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    bottom: 30px;
+    right: 30px; /* Positionné à droite */
+    width: 150%;
+    height: 150%;
+    background-color: #212855;
+    border-radius: 15px;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.sidebar.collapsed .toggle-btn {
+    right: 30px; /* Positionné à droite dans le menu réduit */
+}
+
+.sidebar.collapsed .toggle-btn i {
+    transform: rotate(180deg);
+}
+
+.sidebar.collapsed ~ .content {
+    margin-left: 80px; /* Ajuste la marge quand le menu est réduit */
+}
+
+.sidebar.collapsed .arrow {
+    display: none;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+}
+
+.menu-item {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.menu-item i {
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    width: 24px; /* Assurez-vous que toutes les icônes ont la même largeur */
+    height: 24px; /* Assurez-vous que toutes les icônes ont la même hauteur */
+    justify-content: center; /* Centre l'icône horizontalement */
+}
+
+.menu-item a {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+    pointer-events: none; /* Empêche les clics directs sur le lien */
+}
+
+.menu-item a i,
+.menu-item a span {
+    pointer-events: none; /* Rend les éléments non cliquables, mais permet de cliquer sur le lien */
+}
+
+.sidebar.collapsed .menu-item i {
+    margin-right: 0; /* Supprime la marge à droite dans le menu réduit */
+}
+
+.sidebar.collapsed .menu-item a {
+    justify-content: center;
+}
+
+.menu-item .menu-title {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+.menu-item .menu-dropdown-title {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+.menu-item.active, .menu-item:hover {
+    background-color: #212855;
+    font-weight: bold;
+    color: #ff0f8b;
+}
+
+.menu-item-dropdown {
+    display: none;
+    flex-direction: column;
+    width: 100%; /* Set the width to 100% of the sidebar */
+    padding-left: 0; /* Remove any left padding */
+    background-color: #10142f;
+}
+
+.menu-item.dropdown-active {
+    background-color: #212855;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.menu-item-dropdown a {
+    padding: 0px 20px; /* Adjust the padding to match the .menu-item */
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    width: 100%; /* Set the width to 100% */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.menu-item-dropdown a:hover {
+    background-color: #212855;
+    font-weight: bold;
+    color: #ff0f8b !important; /* Force the text color on hover */
+}
+
+.menu-item-dropdown a.selected {
+    background-color: #212855;
+    font-weight: bold;
+    color: #ff0f8b; /* Change the text color on selected */
+}
+
+.menu-item-dropdown.show {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-item.has-dropdown {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-item.has-dropdown .arrow {
+    transition: transform 0.3s;
+}
+
+.menu-item.has-dropdown .arrow.down {
+    transform: rotate(180deg);
+}
+
+.menu-item-dropdown a i {
+    margin-right: 15px; /* Adjust the spacing for icons in dropdown items */
+}
+
+.menu-item-dropdown li.selected a {
+    background-color: #212855;
+    font-weight: bold;
+    color: #ff0f8b;
+}

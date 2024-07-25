@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acheteurs</title>
+    <link rel="stylesheet" href="/STATIC/styles.css">
+    <link rel="stylesheet" href="/STATIC/sidebar.css">
+    <link rel="stylesheet" href="/STATIC/tables.css">
+    <link rel="stylesheet" href="/STATIC/TAB-DONNEES/dbl-container.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="logo-container">
+            <a href="/HTML/index.html">
+                <img src="/images/logo_tenjin.png" alt="Tenjin Logo" class="logo">
+            </a>
+        </div>
+        <ul>
+            <li class="menu-item">
+                <a href="/HTML/collection.html">
+                    <i class="fas fa-archive"></i>
+                    <span class="menu-title">Collection</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="/HTML/factures.html">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <span class="menu-title">Factures</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="/HTML/series.html">
+                    <i class="fas fa-book"></i>
+                    <span class="menu-title">Séries</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="/HTML/mouvement.html">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span class="menu-title">Mouvement</span>
+                </a>
+            </li>
+            <li class="menu-item has-dropdown">
+                <a href="#">
+                    <i class="fas fa-database"></i>
+                    <span class="menu-title">Données</span>
+                </a>
+                <i class="fas fa-chevron-down arrow"></i>
+            </li>
+            <ul class="menu-item-dropdown" id="dropdownMenu">
+                <li class="menu-item">
+                    <a href="/HTML/editions.html">
+                        <i class="fa-solid fa-list"></i>
+                        <span class="menu-dropdown-title">Éditions</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="/HTML/auteurs.html">
+                        <i class="fas fa-user-edit"></i>
+                        <span class="menu-dropdown-title">Auteurs</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="/HTML/acheteurs.html">
+                        <i class="fas fa-user-check"></i>
+                        <span class="menu-dropdown-title">Acheteurs</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="/HTML/vendeurs.html">
+                        <i class="fas fa-store"></i>
+                        <span class="menu-dropdown-title">Vendeurs</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="/HTML/autres.html">
+                        <i class="fas fa-ellipsis-h"></i>
+                        <span class="menu-dropdown-title">Autres</span>
+                    </a>
+                </li>
+            </ul>
+            <li class="menu-item">
+                <a href="/HTML/stats.html">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span class="menu-title">Statistiques</span>
+                </a>
+        </ul>
+        <button class="toggle-btn" id="toggleBtn"><i class="fas fa-chevron-left"></i></button>
+    </div>
+    <div class="content" id="main-content">
+        <header class="header">
+            <h1>Acheteurs</h1>
+            <div class="subtitle">Bienvenue sur la page Acheteurs</div>
+        </header>
+
+
+        <main>
+            <main class="main-content">
+                <div class="left-content">
+                    <table id="acheteursTable" class="acheteurs-table display">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Acheteur</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="#" class="view-acheteur"><i class="fas fa-search"></i></a>
+                                    <a href="#" class="edit-acheteur"><i class="fas fa-edit"></i></a>
+                                    <a href="#" class="delete-acheteur"><i class="fas fa-trash"></i></a>
+                                </td>
+                                <td>
+                                    <div class="author-info">
+                                        <strong>KEM</strong>
+                                        <span class="right-aligned">156 références</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        
+                    </table>
+                </div>
+
+
+                <div class="right-content">
+                    <div class="card">
+                        <div class="card-header">
+                            Liste des factures de cet acheteur :
+                        </div>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <div class="author-info">
+                                    F20230101
+                                    <span class="right-aligned">46 références</span>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="author-info">
+                                    F20220501
+                                    <span class="right-aligned">76 références</span>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="author-info">
+                                    F20240601
+                                    <span class="right-aligned">34 références</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+ 
+        </main>
+
+        
+ 
+        
+
+
+    </div>
+    <script src="/STATIC/sidebar.js"></script>
+    <script src="/STATIC/TAB-DONNEES/acheteurs.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <button class="floating-btn">+</button>
+</body>
+</html>

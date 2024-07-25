@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Tenjin - Statistiques</title>
+    <link rel="stylesheet" href="/STATIC/stats_styles.css">
+    <link rel="stylesheet" href="/STATIC/styles.css">
+    <link rel="stylesheet" href="/STATIC/sidebar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="../images/logo_tenjin.png" alt="Tenjin Logo" class="logo">
+            </a>
+        </div>
+        <ul>
+            <li class="menu-item">
+                <a href="collection.html">
+                    <i class="fas fa-archive"></i>
+                    <span class="menu-title">Collection</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="factures.html">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <span class="menu-title">Factures</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="series.html">
+                    <i class="fas fa-book"></i>
+                    <span class="menu-title">Séries</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="mouvement.html">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span class="menu-title">Mouvement</span>
+                </a>
+            </li>
+            <li class="menu-item has-dropdown">
+                <a href="#">
+                    <i class="fas fa-database"></i>
+                    <span class="menu-title">Données</span>
+                </a>
+                <i class="fas fa-chevron-down arrow"></i>
+            </li>
+            <ul class="menu-item-dropdown" id="dropdownMenu">
+                <li class="menu-item">
+                    <a href="/HTML/editions.html">
+                        <i class="fa-solid fa-list"></i>
+                        <span class="menu-dropdown-title">Éditions</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="/HTML/auteurs.html">
+                        <i class="fas fa-user-edit"></i>
+                        <span class="menu-dropdown-title">Auteurs</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="/HTML/acheteurs.html">
+                        <i class="fas fa-user-check"></i>
+                        <span class="menu-dropdown-title">Acheteurs</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="/HTML/vendeurs.html">
+                        <i class="fas fa-store"></i>
+                        <span class="menu-dropdown-title">Vendeurs</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="/HTML/autres.html">
+                        <i class="fas fa-ellipsis-h"></i>
+                        <span class="menu-dropdown-title">Autres</span>
+                    </a>
+                </li>
+            </ul>            
+            
+            <li class="menu-item">
+                <a href="/HTML/stats.html">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span class="menu-title">Statistiques</span>
+                </a>
+        </ul>
+        <button class="toggle-btn" id="toggleBtn"><i class="fas fa-chevron-left"></i></button>
+    </div>
+    <div class="content" id="main-content">
+        <header class="header">
+            <h1>Statistiques</h1>
+            <div class="subtitle">Aperçu des données</div>
+        </header>
+        <main>
+            <div class="stats-grid">
+                <div class="stat-card volumes-manga" data-category="volumes-manga" onclick="loadDetails('volumes-manga')">
+                    <span class="stat-value">8.8K</span>
+                    <i class="fas fa-book-open"></i>
+                    <span class="stat-title">Volumes de Manga</span>
+                </div>
+                <div class="stat-card series" data-category="series" onclick="loadDetails('series')">
+                    <span class="stat-value">43.7K</span>
+                    <i class="fas fa-book"></i>
+                    <span class="stat-title">Séries</span>
+                </div>
+                <div class="stat-card editions" data-category="editions" onclick="loadDetails('editions')">
+                    <span class="stat-value">26</span>
+                    <i class="fa-solid fa-list"></i>
+                    <span class="stat-title">Éditions</span>
+                </div>
+                <div class="stat-card auteurs" data-category="auteurs" onclick="loadDetails('auteurs')">
+                    <span class="stat-value">0</span>
+                    <i class="fas fa-user-edit"></i>
+                    <span class="stat-title">Auteurs</span>
+                </div>
+                <div class="stat-card factures" data-category="factures" onclick="loadDetails('factures')">
+                    <span class="stat-value">10.9K</span>
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <span class="stat-title">Factures</span>
+                </div>
+                <div class="stat-card vendeurs" data-category="vendeurs" onclick="loadDetails('vendeurs')">
+                    <span class="stat-value">0</span>
+                    <i class="fa-solid fa-store"></i>
+                    <span class="menu-title">Vendeurs</span>
+                </div>
+                <div class="stat-card acheteurs" data-category="acheteurs" onclick="loadDetails('acheteurs')">
+                    <span class="stat-value">321</span>
+                    <i class="fas fa-user-check"></i>
+                    <span class="stat-title">Acheteurs</span>
+                </div>
+                <div class="stat-card emplacements" data-category="emplacements" onclick="loadDetails('emplacements')">
+                    <span class="stat-value">0</span>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span class="stat-title">Emplacements</span>
+                </div>
+            </div>
+            <div class="details-subtitle" id="details-subtitle">Détails</div>
+            <div class="details-section" id="details-section"></div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <script src="/STATIC/sidebar.js"></script>
+    <script src="/STATIC/stats.js"></script>
+</body>
+</html>

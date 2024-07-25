@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouvement</title>
+    <link rel="stylesheet" href="/STATIC/styles.css">
+    <link rel="stylesheet" href="/STATIC/sidebar.css">
+    <link rel="stylesheet" href="/STATIC/mouvement.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="logo-container">
+            <a href="/HTML/index.html">
+                <img src="/images/logo_tenjin.png" alt="Tenjin Logo" class="logo">
+            </a>
+        </div>
+        <ul>
+            <li class="menu-item">
+                <a href="/HTML/collection.html">
+                    <i class="fas fa-archive"></i>
+                    <span class="menu-title">Collection</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="/HTML/factures.html">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <span class="menu-title">Factures</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="/HTML/series.html">
+                    <i class="fas fa-book"></i>
+                    <span class="menu-title">Séries</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="/HTML/mouvement.html">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span class="menu-title">Mouvement</span>
+                </a>
+            </li>
+            <li class="menu-item has-dropdown">
+                <a href="#">
+                    <i class="fas fa-database"></i>
+                    <span class="menu-title">Données</span>
+                </a>
+                <i class="fas fa-chevron-down arrow"></i>
+            </li>
+            <ul class="menu-item-dropdown" id="dropdownMenu">
+                <li class="menu-item">
+                    <a href="/HTML/editions.html">
+                        <i class="fa-solid fa-list"></i>
+                        <span class="menu-dropdown-title">Éditions</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="/HTML/auteurs.html">
+                        <i class="fas fa-user-edit"></i>
+                        <span class="menu-dropdown-title">Auteurs</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="/HTML/acheteurs.html">
+                        <i class="fas fa-user-check"></i>
+                        <span class="menu-dropdown-title">Acheteurs</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="/HTML/vendeurs.html">
+                        <i class="fas fa-store"></i>
+                        <span class="menu-dropdown-title">Vendeurs</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="/HTML/autres.html">
+                        <i class="fas fa-ellipsis-h"></i>
+                        <span class="menu-dropdown-title">Autres</span>
+                    </a>
+                </li>
+            </ul>            
+            
+            <li class="menu-item">
+                <a href="/HTML/stats.html">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span class="menu-title">Statistiques</span>
+                </a>
+        </ul>
+        <button class="toggle-btn" id="toggleBtn"><i class="fas fa-chevron-left"></i></button>
+    </div>
+    <div class="content" id="main-content">
+        <header class="header">
+            <h1>Mouvement</h1>
+            <div class="subtitle">Bienvenue sur la page Mouvement</div>
+        </header>
+
+
+        <main>
+            <div class="movement-selection">
+                <div class="card">
+                    <div class="card-header">
+                        Sélectionner le type de mouvement
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item">Série en cours</li>
+                        <li class="list-group-item">Série terminée</li>
+                        <li class="list-group-item">Série interrompue</li>
+                        <li class="list-group-item">Série abandonnée</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+        
+    </div>
+    <script src="/STATIC/script.js"></script>
+    <script src="/STATIC/sidebar.js"></script>
+    <script src="/STATIC/mouvement.js"></script>
+</body>
+</html>

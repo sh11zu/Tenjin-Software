@@ -1,0 +1,103 @@
+/* details-editions.css */
+.chart {
+    height: 600px; /* Adjust the height of the chart */
+    width: 600px; /* Adjust the width of the chart */
+    position: relative;
+    margin-top: 20px; /* Adjust this value to lower the chart */
+}
+
+.chart-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Adjust this value to add space between the chart and the legend */
+}
+
+.chart-buttons a {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.chart-buttons a:hover {
+    text-decoration: none;
+}
+
+.edition-container {
+    display: flex;
+    align-items: center;
+}
+
+.edition-container img {
+    margin-right: 10px;
+}
+
+.edition-container span {
+    display: inline-block;
+    min-width: 120px; /* Adjust this width to ensure alignment */
+}
+
+.details-content .chart,
+.details-content .table {
+    flex: 1;
+}
+
+.table {
+    overflow-x: auto;
+}
+
+.table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.chart-title, .table-title {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    font-weight: bold;
+    align-items: center;
+}
+
+.chart-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.chart-buttons a {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.chart-buttons a:hover {
+    text-decoration: none;
+}
+
+.edition-container {
+    display: flex;
+    align-items: center;
+}
+
+.edition-container img {
+    margin-right: 10px;
+}
+
+.edition-container span {
+    display: inline-block;
+    min-width: 120px; /* Adjust this width to ensure alignment */
+}

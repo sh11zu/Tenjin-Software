@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autres</title>
+    <link rel="stylesheet" href="/STATIC/styles.css">
+    <link rel="stylesheet" href="/STATIC/sidebar.css">
+    <link rel="stylesheet" href="/STATIC/TAB-DONNEES/others.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="logo-container">
+            <a href="/HTML/index.html">
+                <img src="/images/logo_tenjin.png" alt="Tenjin Logo" class="logo">
+            </a>
+        </div>
+        <ul>
+            <li class="menu-item">
+                <a href="/HTML/collection.html">
+                    <i class="fas fa-archive"></i>
+                    <span class="menu-title">Collection</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="/HTML/factures.html">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <span class="menu-title">Factures</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="/HTML/series.html">
+                    <i class="fas fa-book"></i>
+                    <span class="menu-title">Séries</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="/HTML/mouvement.html">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span class="menu-title">Mouvement</span>
+                </a>
+            </li>
+            <li class="menu-item has-dropdown">
+                <a href="#">
+                    <i class="fas fa-database"></i>
+                    <span class="menu-title">Données</span>
+                </a>
+                <i class="fas fa-chevron-down arrow"></i>
+            </li>
+            <ul class="menu-item-dropdown" id="dropdownMenu">
+                <li class="menu-item">
+                    <a href="/HTML/editions.html">
+                        <i class="fa-solid fa-list"></i>
+                        <span class="menu-dropdown-title">Éditions</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="/HTML/auteurs.html">
+                        <i class="fas fa-user-edit"></i>
+                        <span class="menu-dropdown-title">Auteurs</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="/HTML/acheteurs.html">
+                        <i class="fas fa-user-check"></i>
+                        <span class="menu-dropdown-title">Acheteurs</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="/HTML/vendeurs.html">
+                        <i class="fas fa-store"></i>
+                        <span class="menu-dropdown-title">Vendeurs</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="/HTML/autres.html">
+                        <i class="fas fa-ellipsis-h"></i>
+                        <span class="menu-dropdown-title">Autres</span>
+                    </a>
+                </li>
+            </ul>            
+            
+            <li class="menu-item">
+                <a href="/HTML/stats.html">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span class="menu-title">Statistiques</span>
+                </a>
+        </ul>
+        <button class="toggle-btn" id="toggleBtn"><i class="fas fa-chevron-left"></i></button>
+    </div>
+    <div class="content" id="main-content">
+        <header class="header">
+            <h1>Autres</h1>
+            <div class="subtitle">Bienvenue sur la page Autres</div>
+        </header>
+        <main>
+            <!-- Ajout de la section avec les blocs -->
+            <div class="container">
+                <div class="left-container">
+                    <div class="bloc bloc1">
+                        <div class="title">
+                            <span>Catégories REG</span>
+                            <button class="menu-button"><i class="fas fa-ellipsis-h"></i></button>
+                            <div class="context-menu">
+                                <div class="menu-item">Ajouter</div>
+                                <div class="menu-item">Editer</div>
+                                <div class="menu-item">Supprimer</div>
+                            </div>
+                        </div>
+                        <div class="bloc-content">
+                            <div class="element">Volume simple</div>
+                            <div class="element">Volume double</div>
+                            <div class="element">One-shot</div>
+                            <div class="element">Perfect Edition</div>
+                            <div class="element">Light Novel</div>
+                            <div class="element">Guidebook</div>
+                            <div class="element">Offre découverte</div>
+                            <div class="element">Pack Intégrale</div>
+                        </div>
+                    </div>
+                    <div class="bloc bloc3">
+                        <div class="title">
+                            <span>États de parution</span>
+                            <button class="menu-button"><i class="fas fa-ellipsis-h"></i></button>
+                            <div class="context-menu">
+                                <div class="menu-item">Ajouter</div>
+                                <div class="menu-item">Editer</div>
+                                <div class="menu-item">Supprimer</div>
+                            </div>
+                        </div>
+                        <div class="bloc-content">
+                            <div class="element">Série en cours</div>
+                            <div class="element">Série terminée</div>
+                            <div class="element">Série interrompue</div>
+                            <div class="element">Série abandonnée</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="middle-container">
+                    <div class="bloc bloc2">
+                        <div class="title">
+                            <span>Catégories SPE</span>
+                            <button class="menu-button"><i class="fas fa-ellipsis-h"></i></button>
+                            <div class="context-menu">
+                                <div class="menu-item">Ajouter</div>
+                                <div class="menu-item">Editer</div>
+                                <div class="menu-item">Supprimer</div>
+                            </div>
+                        </div>
+                        <div class="bloc-content">
+                            <div class="element">Coffret</div>
+                            <div class="element">Coffret + Roman</div>
+                            <div class="element">Coffret Intégrale</div>
+                            <div class="element">Édition collector</div>
+                            <div class="element">Édition limitée</div>
+                            <div class="element">Édition prestige</div>
+                            <div class="element">Starter Pack</div>
+                        </div>
+                    </div>
+                    <div class="bloc bloc4">
+                        <div class="title">
+                            <span>Valeurs génériques</span>
+                            <button class="menu-button"><i class="fas fa-ellipsis-h"></i></button>
+                            <div class="context-menu">
+                                <div class="menu-item">Ajouter</div>
+                                <div class="menu-item">Editer</div>
+                                <div class="menu-item">Supprimer</div>
+                            </div>
+                        </div>
+                        <div class="bloc-content">
+                            <div class="element">element</div>
+                            <div class="element">element</div>
+                            <div class="element">element</div>
+                            <div class="element">element</div>
+                            <div class="element">element</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-container">
+                    <div class="bloc bloc5">
+                        <div class="title">
+                            <span>Emplacements</span>
+                            <button class="menu-button"><i class="fas fa-ellipsis-h"></i></button>
+                            <div class="context-menu">
+                                <div class="menu-item">Ajouter</div>
+                                <div class="menu-item">Editer</div>
+                                <div class="menu-item">Supprimer</div>
+                            </div>
+                        </div>
+                        <div class="bloc-content">
+                            <div class="element">A.01</div>
+                            <div class="element">A.02</div>
+                            <div class="element">A.03</div>
+                            <div class="element">A.04</div>
+                            <div class="element">A.05</div>
+                            <div class="element">A.06</div>
+                            <div class="element">B.01</div>
+                            <div class="element">B.02</div>
+                            <div class="element">B.03</div>
+                            <div class="element">B.04</div>
+                            <div class="element">B.05</div>
+                            <div class="element">B.06</div>
+                            <div class="element">C.01</div>
+                            <div class="element">C.02</div>
+                            <div class="element">C.03</div>
+                            <div class="element">C.04</div>
+                            <div class="element">C.05</div>
+                            <div class="element">C.06</div>
+                            <div class="element">C.08</div>
+                            <div class="element">D.01</div>
+                            <div class="element">D.02</div>
+                            <div class="element">D.03</div>
+                            <div class="element">D.04</div>
+                            <div class="element">H.01</div>
+                            <div class="element">H.02</div>
+                            <div class="element">H.03</div>
+                            <div class="element">H.04</div>
+                            <div class="element">X.00</div>
+                            <div class="element">X.01</div>
+                            <div class="element">X.02</div>
+                            <div class="element">X.03</div>
+                            <div class="element">X.50</div>
+                            <div class="element">X.99</div>
+                            <div class="element">Z.00</div>
+                            <div class="element">Z.OUT</div>
+                        </div>                
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pop-up Modal for Editing -->
+            <div id="editModal" class="modal">
+                <div class="modal-content">
+                    <h2 id="editModalTitle">Editer l'élément</h2>
+                    <input type="text" id="editInput">
+                    <div class="modal-buttons">
+                        <button id="cancelButton">Annuler</button>
+                        <button id="saveButton">Sauvegarder</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pop-up Modal for Adding -->
+            <div id="addModal" class="modal">
+                <div class="modal-content">
+                    <h2 id="addModalTitle">Ajouter un élément</h2>
+                    <input type="text" id="addInput">
+                    <div class="modal-buttons">
+                        <button id="addCancelButton">Annuler</button>
+                        <button id="addSaveButton">Ajouter</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="/STATIC/TAB-DONNEES/others.js"></script>
+    <script src="/STATIC/sidebar.js"></script>
+</body>
+</html>
