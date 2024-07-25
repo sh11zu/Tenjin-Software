@@ -109,20 +109,8 @@
                                 <th>Auteur</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <a href="#" class="view-auteur"><i class="fas fa-search"></i></a>
-                                    <a href="#" class="edit-auteur"><i class="fas fa-edit"></i></a>
-                                    <a href="#" class="delete-auteur"><i class="fas fa-trash"></i></a>
-                                </td>
-                                <td>
-                                    <div class="author-info">
-                                        <strong>Hajime Isayama</strong>
-                                        <span class="right-aligned">Scénario ; Mangaka</span>
-                                    </div>
-                                </td>
-                            </tr>
+                        <tbody id="authors-table-body">
+                            <!-- Les données des auteurs seront insérées ici par JavaScript -->
                         </tbody>
                         
                     </table>
@@ -163,6 +151,7 @@
     </div>
     <script src="/STATIC/sidebar.js"></script>
     <script src="/STATIC/TAB-DONNEES/auteurs.js"></script>
+    <script src="/STATIC/queries/fetchData.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
