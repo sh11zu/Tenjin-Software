@@ -20,6 +20,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 `;
                 tableBody.appendChild(row);
             });
+
+            // Initialiser DataTable après l'insertion des données
+            $('#sellersTable').DataTable();
         })
         .catch(error => console.error('Error fetching data:', error));
 
@@ -58,6 +61,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     `;
                     tableBody.appendChild(row);
                 });
+
+                // Initialiser DataTable après l'insertion des données
+                $('#customersTable').DataTable();
             }
         })
         .catch(error => console.error('Error fetching data:', error));
@@ -87,6 +93,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 `;
                 tableBody.appendChild(row);
             });
+
+            // Initialiser DataTable après l'insertion des données
+            $('#vendeursTable').DataTable();
         })
         .catch(error => console.error('Error fetching data:', error));
 
@@ -123,6 +132,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 `;
                 tableBody.appendChild(row);
             });
+
+            // Initialiser DataTable après l'insertion des données
+            $('#editionsTable').DataTable();
         })
         .catch(error => console.error('Error fetching data:', error));
 
@@ -158,6 +170,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 `;
                 tableBody.appendChild(row);
             });
+
+            // Initialiser DataTable après l'insertion des données
+            $('#auteursTable').DataTable();
         })
         .catch(error => console.error('Error fetching data:', error));
         
