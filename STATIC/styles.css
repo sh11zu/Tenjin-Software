@@ -1,7 +1,12 @@
+@font-face {
+    font-family: Coolvetica;
+    src: url("/ressources/fonts/coolvetica\ rg.otf") format("opentype");
+}
+
 body {
     display: flex;
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     height: 100vh;
     overflow: hidden;
 }

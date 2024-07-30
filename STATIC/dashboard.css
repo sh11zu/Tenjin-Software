@@ -1,0 +1,314 @@
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* General styles */
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.calendar-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.date-container {
+    display: flex;
+    align-items: center;
+}
+
+.current-date {
+    align-items: center;
+    margin-left: 5px; /* Adjust this value to reduce space between icon and text */
+}
+
+.go-today {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.go-today i {
+    color: #333; /* Icon color */
+}
+
+.go-today:hover i {
+    color: #007bff; /* Icon color on hover */
+}
+
+.icons {
+    margin-left: auto;
+}
+
+.nav-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #333;
+    padding: 5px;
+    margin: 0 5px;
+}
+
+.nav-button:hover {
+    color: #007bff; /* Change color on hover */
+}
+
+.nav-button:focus {
+    outline: none; /* Remove focus outline */
+}
+
+
+
+.calendar {
+    width: 100%;
+}
+
+.sidebar-panel {
+    width: 40%;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    padding: 20px;
+    box-sizing: border-box; /* Ensure padding is included in width */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 20px;
+}
+
+/* Card styles */
+.cards-container {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-left: 20px;
+}
+
+.card {
+    background-color: #CCD0CF;
+    border-radius: 20px;
+    padding: 20px;
+    position: relative;
+    box-sizing: border-box;
+    transition: background-color 0.3s, color 0.3s;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.card:hover {
+    background-color: #273545;
+    color: #9BA8AB;
+}
+
+.card.selected {
+    background-color: #06141B;
+    color: #CCD0CF;
+}
+
+.card h2 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.card p {
+    margin: 10px 0 0;
+    font-size: 2em;
+}
+
+.amount {
+    font-family: Coolvetica; /* or any other font you prefer */
+    font-size: 50px;
+}
+
+.card small {
+    display: block;
+    margin-top: 5px;
+    color: gray;
+}
+
+.button-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.arrow-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #9BA8AB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+
+.arrow-button:hover {
+    width: 50px;
+    height: 50px;
+    transform: rotate(360deg);
+    transition: 0.80s;
+}
+
+.arrow-button::after {
+    content: '➚';
+    font-size: 30px;
+    color: black;
+}
+
+/* Calendar specific styles */
+.calendar {
+    padding: 20px;
+}
+
+.calendar ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    text-align: center;
+}
+
+.calendar .days {
+    margin-bottom: 20px;
+}
+
+.calendar li {
+    color: #333;
+    width: calc(100% / 7);
+    font-size: 1.07rem;
+}
+
+.calendar .weeks li {
+    font-weight: 500;
+    cursor: default;
+}
+
+.calendar .days li {
+    z-index: 1;
+    cursor: pointer;
+    position: relative;
+    margin-top: 30px;
+}
+
+.days li.inactive {
+    color: #aaa;
+}
+
+.days li.active {
+    color: #fff;
+}
+
+.days li::before {
+    position: absolute;
+    content: "";
+    left: 50%;
+    top: 50%;
+    height: 40px;
+    width: 40px;
+    z-index: -1;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.days li:not(.active):hover::before {
+    background: #9BA8AB;
+}
+
+.current-date {
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 0px;
+    margin-top: 1px;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.date-container {
+    display: flex;
+    align-items: center;
+}
+
+.calendar-current-day::before,
+.calendar-active::before {
+    position: absolute;
+    content: "";
+    left: 50%;
+    top: 50%;
+    height: 40px;
+    width: 40px;
+    z-index: -1;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.calendar-current-day::before {
+    background: #CCD0CF; /* Light gray background for current day */
+}
+
+.calendar-active::before {
+    background: #06141B; /* Background color for the selected day */
+}
+
+.calendar-active {
+    color: #CCD0CF !important;
+    font-weight: bold;
+}
+
+.current-date .year-selector {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.selectYear{
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 0px;
+    margin-top: 1px;
+    align-items: center;
+    margin-left: 15px;
+}
+
+
+/* .current-date .year-selector:hover {
+    color: #4A5C6A;
+} */
+
+.go-today {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.go-today i {
+    color: #333;
+}
+
+.go-today:hover i {
+    color: #9BA8AB;
+}

@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Tenjin</title>
+    <title>Tableau de bord</title>
     <link rel="stylesheet" href="/STATIC/styles.css">
     <link rel="stylesheet" href="/STATIC/sidebar.css">
+    <link rel="stylesheet" href="/STATIC/dashboard.css">
+    <!-- <link rel="stylesheet" href="/STATIC/calendar.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 </head>
 <body>
     <div class="sidebar" id="sidebar">
@@ -16,6 +19,12 @@
             </a>
         </div>
         <ul>
+            <li class="menu-item">
+                <a href="/HTML/index.html">
+                    <i class="fa fa-tachometer"></i>
+                    <span class="menu-title">Tableau de bord</span>
+                </a>
+            </li>
             <li class="menu-item">
                 <a href="/HTML/collection.html">
                     <i class="fas fa-archive"></i>
@@ -90,13 +99,86 @@
     </div>
     <div class="content" id="main-content">
         <header class="header">
-            <h1>titre menu 2</h1>
+            <h1>Tableau de bord</h1>
             <div class="subtitle">sous titre page web</div>
         </header>
+        <div class="wrapper">
+            <div class="calendar-container">
+                <div class="header-container">
+                    <div class="date-container">
+                        <button id="go-today" class="go-today">
+                            <i class="fa fa-calendar"></i>
+                        </button>
+                        <p class="current-date">
+                            <span class="month-name"></span>
+                           
+                                <select id="year-select"></select>
+                                <span class="year-selector"></span>
+                            
+                        </p>
+                    </div>
+                    <div class="icons">
+                        <button id="prev" class="nav-button">
+                            <span class="material-symbols-rounded">chevron_left</span>
+                        </button>
+                        <button id="next" class="nav-button">
+                            <span class="material-symbols-rounded">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="calendar">
+                    <ul class="weeks">
+                        <li>Dim</li>
+                        <li>Lun</li>
+                        <li>Mar</li>
+                        <li>Mer</li>
+                        <li>Jeu</li>
+                        <li>Ven</li>
+                        <li>Sam</li>
+                    </ul>
+                    <ul class="days"></ul>
+                </div>
+            </div>
+            <div class="sidebar-panel">
+                <h2></h2>
+                <p class="selected-day">Aucun événement à afficher ce jour.</p>
+            </div>
+            <div class="cards-container">
+                <div class="card" onclick="toggleSelection(this)">
+                    <h2>Références</h2>
+                    <p class="amount">+ 15</p>
+                    <small>Nouveaux ajouts de ce mois</small>
+                    <div class="button-container">
+                        <div class="arrow-button"></div>
+                    </div>
+                </div>
+                <div class="card" onclick="toggleSelection(this)">
+                    <h2>Factures</h2>
+                    <p class="amount">3</p>
+                    <small>Depuis le 1er juillet 2024</small>
+                    <div class="button-container">
+                        <div class="arrow-button"></div>
+                    </div>
+                </div>
+                <div class="card" onclick="toggleSelection(this)">
+                    <h2>Dépenses mensuelles</h2>
+                    <p class="amount">120,00 €</p>
+                    <small>Depuis le 1er juillet 2024</small>
+                    <div class="button-container">
+                        <div class="arrow-button"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <main>
+            <!-- Main content here -->
         </main>
+        
     </div>
+    <script src="/STATIC/calendar.js"></script>
     <script src="/STATIC/script.js"></script>
     <script src="/STATIC/sidebar.js"></script>
+    <script src="/STATIC/dashboard.js"></script>
+    
 </body>
 </html>

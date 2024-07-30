@@ -1,0 +1,162 @@
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.wrapper header{
+  display: flex;
+  align-items: center;
+  padding: 25px 30px 10px;
+  justify-content: space-between;
+}
+
+.icons span:last-child{
+  margin-right: -10px;
+}
+
+.calendar{
+  width: 70%;
+}
+
+.calendar ul{
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  text-align: center;
+}
+.calendar .days{
+  margin-bottom: 20px;
+}
+.calendar li{
+  color: #333;
+  width: calc(100% / 7);
+  font-size: 1.07rem;
+}
+.calendar .weeks li{
+  font-weight: 500;
+  cursor: default;
+}
+.calendar .days li{
+  z-index: 1;
+  cursor: pointer;
+  position: relative;
+  margin-top: 30px;
+}
+.days li.inactive{
+  color: #aaa;
+}
+.days li.active{
+  color: #fff;
+}
+.days li::before{
+  position: absolute;
+  content: "";
+  left: 50%;
+  top: 50%;
+  height: 40px;
+  width: 40px;
+  z-index: -1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.days li:not(.active):hover::before{
+  background: #9BA8AB ;
+}
+
+.current-date {
+  font-weight: bold;
+  font-size: 25px;
+  margin-bottom: 0px;
+  margin-top: 1px;
+  align-items: center;
+  margin-left: 5px;
+}
+
+.date-container {
+  display: flex;
+  align-items: center;
+}
+
+.calendar-current-day::before,
+.calendar-active::before {
+    position: absolute;
+    content: "";
+    left: 50%;
+    top: 50%;
+    height: 40px;
+    width: 40px;
+    z-index: -1;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.calendar-current-day::before {
+    background: #CCD0CF    ; /* Light gray background for current day */
+}
+
+.calendar-active::before {
+    background: #06141B ; /* Background color for the selected day */
+}
+
+.calendar-active {
+    color: #CCD0CF   !important;
+    font-weight: bold;
+}
+
+.calendar-and-sidebar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.current-date .year-selector {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* .current-date .year-selector:hover {
+  color: #4A5C6A ;
+} */
+
+
+.go-today {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.go-today i {
+  color: #333;
+}
+
+.go-today:hover i {
+  color: #9BA8AB ;
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #333;
+  padding: 5px;
+  margin: 0 5px;
+}
+
+.nav-button:hover {
+  color: #007bff; /* Change color on hover */
+}
+
+.nav-button:focus {
+  outline: none; /* Remove focus outline */
+}
