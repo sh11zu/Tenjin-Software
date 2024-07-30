@@ -1,35 +1,44 @@
 document.addEventListener('DOMContentLoaded', function() {
     var daysContainer = document.querySelector('.days');
     var selectedDayElement = document.querySelector('.selected-day');
-    var currentDateElement = document.querySelector('.current-date');
     var sidebarTitleElement = document.querySelector('.sidebar-panel h2');
-
-    const yearSelect = document.getElementById('year-select');
+    const yearDisplay = document.getElementById('year-display');
+    const headerContainer = document.querySelector('.header-container');
     const currentYear = new Date().getFullYear();
     const startYear = 2000;
-    const endYear = 2030;
+    const endYear = 2050;
+    let month = new Date().getMonth();
+    let year = currentYear;
 
-    for (let year = startYear; year <= endYear; year++) {
-        const option = document.createElement('option');
-        option.value = year;
-        option.textContent = year;
-        yearSelect.appendChild(option);
-    }
+    // Ensure the calendar container maintains position
+    const calendarContainer = document.querySelector('.calendar-container');
+    calendarContainer.style.position = 'relative';
 
-    // Set current year as selected
-    yearSelect.value = currentYear;
+    const yearCalendarContainer = document.querySelector('.year-calendar');
 
-    // Event listener for year change
-    yearSelect.addEventListener('change', (event) => {
-        year = parseInt(event.target.value);
-        renderCalendar();
+    // Create year calendar with pagination
+ 
+ 
+
+
+    yearDisplay.addEventListener('click', function() {
+        if (yearCalendarContainer.style.display === 'grid') {
+            yearCalendarContainer.style.display = 'none';
+            document.querySelector('.calendar').style.display = 'block';
+            headerContainer.classList.remove('header-container-year');
+            headerContainer.classList.add('header-container');
+        } else {
+            yearCalendarContainer.innerHTML = createYearCalendar(startYear, endYear, year);
+            yearCalendarContainer.style.display = 'grid';
+            document.querySelector('.calendar').style.display = 'none';
+            headerContainer.classList.remove('header-container');
+            headerContainer.classList.add('header-container-year');
+        }
     });
 
     const months = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
     const daysOfWeek = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
     const currentDate = new Date();
-    let month = currentDate.getMonth();
-    let year = currentDate.getFullYear();
 
     function renderCalendar(selectedDay = null) {
         const firstDayOfMonth = new Date(year, month, 1).getDay();
@@ -54,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         document.querySelector('.month-name').innerText = `${months[month]}`;
-        yearSelect.innerText = `${year}`;
+        document.getElementById('year-display').innerText = `${year}`;  // Update year in the header
         daysContainer.innerHTML = days;
         addDayClickEvent();
     }

@@ -87,6 +87,12 @@ body, html {
     text-decoration: underline;
 }
 
+input[type=text] ,input[type=password] {
+    background-color: #3d3d3d69;
+    color: aliceblue;
+    border: 1px solid #ffffff69
+  }
+
 .error-message {
     color: red;
     margin-top: 10px;

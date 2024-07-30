@@ -16,15 +16,19 @@
 .vendeurs-table a, .vendeurs-table i,
 .editions-table a, .editions-table i {
     margin-right: 5px;
-    color: blue;
+    color: #06141B;
 }
+
 
 .series-table thead th, .factures-table thead th,
 .acheteurs-table thead th, .vendeurs-table thead th,
 .auteurs-table thead th, .editions-table thead th {
-    background-color: #f8f9fa;
+    background-color: #06141B;
+    color: #CCD0CF;
     font-weight: bold;
     text-align: left;
+    border: 2px solid #06141B !important ;
+    
 }
 
 .series-table tbody td, .series-table thead th,
@@ -40,11 +44,18 @@
 .series-table tbody tr, .factures-table tbody tr,
 .acheteurs-table tbody tr, .vendeurs-table tbody tr,
 .auteurs-table tbody tr, .editions-table tbody tr {
-    background-color: #f2f2f2; /* Gris clair pour toutes les lignes */
+    background-color: #CCD0CF; /* Gris clair pour toutes les lignes */
 }
 
 /* Gestion de la surbrillance */
 .highlight {
-    background-color: #ff0f8b4b !important; /* Couleur de surbrillance */
+    background-color: #9BA8AB !important; /* Couleur de surbrillance */
     font-weight: bold; /* Mettre le texte en gras */
+    color: #06141B;
+    border: 2px solid #9BA8AB !important ;
+}
+
+/* Ajout de border-radius aux tables */
+.series-table, .factures-table, .auteurs-table, .acheteurs-table, .vendeurs-table, .editions-table {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
 }

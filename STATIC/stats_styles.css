@@ -15,29 +15,32 @@
 }
 
 .stat-card {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: #CCD0CF;
     padding: 20px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     position: relative;
-    border: 2px solid transparent;
+    border: 1px solid transparent;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
     transition: transform 0.2s; /* Add transition for the zoom effect */
     cursor: pointer;
 }
 
 .stat-card.selected {
-    background-color: rgb(2, 0, 90);
+    background-color: #06141B;
     border-color: #000;
     border-radius: 15px;
-    border: 4px solid;
-    color: rgb(255, 251, 0);
+    border: 0px solid;
+    color: #CCD0CF;
     transition: transform 0.8s;
     font: bold;
 }
 
 .stat-card:hover {
+    background-color: #273545;
+    color: #9BA8AB;
     transform: scale(1.05); /* Zoom effect on hover */
 }
 
@@ -189,52 +192,4 @@
 
 .more-link a:hover {
     text-decoration: none;
-}
-
-.volumes-manga {
-    background-color: rgba(75, 0, 130, 0.2);
-    border-color: rgba(75, 0, 130, 0.8);
-    color: rgba(75, 0, 130, 0.8);
-}
-
-.series {
-    background-color: rgba(255, 140, 0, 0.2);
-    border-color: rgba(255, 140, 0, 0.8);
-    color: rgba(255, 140, 0, 0.8);
-}
-
-.factures {
-    background-color: rgba(230, 230, 0, 0.2);
-    border-color: rgba(230, 230, 0, 0.8);
-    color: rgba(230, 230, 0, 0.8);
-}
-
-.vendeurs {
-    background-color: rgba(0, 128, 0, 0.2);
-    border-color: rgba(0, 128, 0, 0.8);
-    color: rgba(0, 128, 0, 0.8);
-}
-
-.acheteurs {
-    background-color: rgba(255, 0, 0, 0.2);
-    border-color: rgba(255, 0, 0, 0.8);
-    color: rgba(255, 0, 0, 0.8);
-}
-
-.editions {
-    background-color: rgba(0, 0, 255, 0.2);
-    border-color: rgba(0, 0, 255, 0.8);
-    color: rgba(0, 0, 255, 0.8);
-}
-
-.auteurs {
-    background-color: rgba(219, 112, 147, 0.2);
-    border-color: rgba(219, 112, 147, 0.8);
-    color: rgba(219, 112, 147, 0.8);
-}
-
-.emplacements {
-    background-color: rgba(128, 128, 128, 0.2);
-    border-color: rgba(128, 128, 128, 0.8);
-    color: rgba(128, 128, 128, 0.8);
 }

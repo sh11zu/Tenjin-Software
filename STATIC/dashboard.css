@@ -28,6 +28,13 @@
     width: 100%;
 }
 
+.header-container-year {
+    display: flex;
+    justify-content: center; /* Center the header content */
+    align-items: center;
+    padding: 25px 30px 10px;
+}
+
 .date-container {
     display: flex;
     align-items: center;
@@ -78,11 +85,6 @@
     outline: none; /* Remove focus outline */
 }
 
-
-
-.calendar {
-    width: 100%;
-}
 
 .sidebar-panel {
     width: 40%;
@@ -137,8 +139,9 @@
 }
 
 .amount {
-    font-family: Coolvetica; /* or any other font you prefer */
-    font-size: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bolder;
+    font-size: 60px;
 }
 
 .card small {
@@ -178,10 +181,7 @@
     color: black;
 }
 
-/* Calendar specific styles */
-.calendar {
-    padding: 20px;
-}
+
 
 .calendar ul {
     display: flex;
