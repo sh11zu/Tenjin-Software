@@ -1,13 +1,19 @@
 document.addEventListener('DOMContentLoaded', function () {
-    $('#auteursTable').DataTable({
-        pageLength: 10,
-        columnDefs: [
-            { orderable: false, targets: 0 }
-        ],
-        language: {
-            url: '/ressources/French.json'
+    function initializeDataTable() {
+        if ($.fn.dataTable.isDataTable('#auteursTable')) {
+            $('#auteursTable').DataTable().destroy();
         }
-    });
+
+        $('#auteursTable').DataTable({
+            pageLength: 10,
+            columnDefs: [
+                { orderable: false, targets: 0 }
+            ],
+            language: {
+                url: '/ressources/French.json'
+            }
+        });
+    }
 
     $(document).on('click', '.delete-auteur', function (e) {
         e.preventDefault();
@@ -52,4 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
         $(this).removeClass('highlight');
         $(this).find('td').removeClass('highlight'); // Retirer la classe de toutes les cellules
     });
+
+    // Initialisation du tableau après chargement des données
+    document.addEventListener('dataLoaded', initializeDataTable);
 });
