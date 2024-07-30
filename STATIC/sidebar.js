@@ -79,29 +79,26 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Ensure the sidebar state is applied immediately
-    function applySidebarState() {
-        var sidebarState = localStorage.getItem('sidebarState');
-        if (sidebarState === 'collapsed') {
-            sidebar.classList.add('collapsed', 'no-transition');
-            mainContent.classList.add('collapsed', 'no-transition');
-            toggleBtn.classList.add('open');
-        } else {
-            sidebar.classList.remove('collapsed', 'no-transition');
-            mainContent.classList.remove('collapsed', 'no-transition');
-            toggleBtn.classList.remove('open');
-        }
-    }
-
-    // Apply the sidebar state as soon as possible
-    applySidebarState();
-
-    // Remove the no-transition class after the page has loaded
-    setTimeout(function() {
-        sidebar.classList.remove('no-transition');
-        mainContent.classList.remove('no-transition');
-    }, 100); // 100ms delay
-
     toggleBtn.addEventListener('click', toggleSidebar);
     setActiveLink(); // Call the function to set the active link
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const userNameElement = document.getElementById('userName');
+    const userProfileElement = document.getElementById('userProfile');
+
+    const userName = userNameElement.textContent.trim();
+    const initials = userName.split(' ').map(name => name.charAt(0)).join('');
+
+    userProfileElement.textContent = initials;
+    userProfileElement.style.display = 'flex';
+    userProfileElement.style.alignItems = 'center';
+    userProfileElement.style.justifyContent = 'center';
+    userProfileElement.style.width = '50px';
+    userProfileElement.style.height = '50px';
+    userProfileElement.style.borderRadius = '50%';
+    userProfileElement.style.backgroundColor = '#4A5C6A';
+    userProfileElement.style.color = 'white';
+    userProfileElement.style.fontSize = '1.5rem';
+    userProfileElement.style.fontWeight = 'bold';
 });

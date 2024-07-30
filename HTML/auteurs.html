@@ -14,11 +14,18 @@
 </head>
 <body>
     <div class="sidebar" id="sidebar">
+        
+
+
+
         <div class="logo-container">
             <a href="/HTML/index.html">
-                <img src="/images/logo_tenjin.png" alt="Tenjin Logo" class="logo">
+                <img src="/images/logo_tenjin.png" alt="Tenjin Logo" class="logo" title="Tenjin">
             </a>
         </div>
+        
+        <hr class="divider">
+        <div class="menu-section-title">général</div>
         <ul>
             <li class="menu-item">
                 <a href="/HTML/index.html">
@@ -32,25 +39,25 @@
                     <span class="menu-title">Collection</span>
                 </a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item" title="Factures">
                 <a href="/HTML/factures.html">
                     <i class="fas fa-file-invoice-dollar"></i>
                     <span class="menu-title">Factures</span>
                 </a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item" title="Séries">
                 <a href="/HTML/series.html">
                     <i class="fas fa-book"></i>
                     <span class="menu-title">Séries</span>
                 </a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item" title="Mouvement">
                 <a href="/HTML/mouvement.html">
                     <i class="fas fa-exchange-alt"></i>
                     <span class="menu-title">Mouvement</span>
                 </a>
             </li>
-            <li class="menu-item has-dropdown">
+            <li class="menu-item has-dropdown" title="Données">
                 <a href="#">
                     <i class="fas fa-database"></i>
                     <span class="menu-title">Données</span>
@@ -58,44 +65,77 @@
                 <i class="fas fa-chevron-down arrow"></i>
             </li>
             <ul class="menu-item-dropdown" id="dropdownMenu">
-                <li class="menu-item">
+                <li class="menu-item" title="Éditions">
                     <a href="/HTML/editions.html">
                         <i class="fa-solid fa-list"></i>
                         <span class="menu-dropdown-title">Éditions</span>
                     </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item" title="Auteurs">
                     <a href="/HTML/auteurs.html">
                         <i class="fas fa-user-edit"></i>
                         <span class="menu-dropdown-title">Auteurs</span>
                     </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item" title="Acheteurs">
                     <a href="/HTML/acheteurs.html">
                         <i class="fas fa-user-check"></i>
                         <span class="menu-dropdown-title">Acheteurs</span>
                     </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item" title="Vendeurs">
                     <a href="/HTML/vendeurs.html">
                         <i class="fas fa-store"></i>
                         <span class="menu-dropdown-title">Vendeurs</span>
                     </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item" title="Autres">
                     <a href="/HTML/autres.html">
                         <i class="fas fa-ellipsis-h"></i>
                         <span class="menu-dropdown-title">Autres</span>
                     </a>
                 </li>
             </ul>            
-            
-            <li class="menu-item">
+            <li class="menu-item" title="Statistiques">
                 <a href="/HTML/stats.html">
                     <i class="fa-solid fa-diagram-project"></i>
                     <span class="menu-title">Statistiques</span>
                 </a>
+            </li>
         </ul>
+
+        <hr class="divider">
+        <div class="menu-section-title">compte</div>
+
+        <ul>
+            <li class="menu-item" title="Messages">
+                <a href="">
+                    <i class="fa-solid fa-message"></i>
+                    <span class="menu-title">Messages</span>
+                </a>
+            </li>
+            <li class="menu-item" title="Paramètres">
+                <a href="">
+                    <i class="fa fa-cog"></i>
+                    <span class="menu-title">Paramètres</span>
+                </a>
+            </li>
+            <li class="menu-item" title="Déconnexion">
+                <a href="/HTML/login.html">
+                    <i class="fa fa-sign-out"></i>
+                    <span class="menu-title">Déconnexion</span>
+                </a>
+            </li>
+        </ul>
+        <hr class="divider">
+        <div class="user-controls">
+            <div class="user-profile" id="userProfile"></div>
+            <div class="user-info">
+                <div class="user-name" id="userName">Ethan Masneuf</div>
+                <div class="user-email">Administrateur</div>
+            </div>
+        </div>
+
         <button class="toggle-btn" id="toggleBtn"><i class="fas fa-chevron-left"></i></button>
     </div>
     <div class="content" id="main-content">
