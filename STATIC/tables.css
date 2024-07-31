@@ -66,6 +66,7 @@
 .acheteurs-table tbody tr, .vendeurs-table tbody tr,
 .auteurs-table tbody tr, .editions-table tbody tr {
     background-color: #ffffff !important; /* Blanc pour toutes les lignes */
+    height: 60px; /* Hauteur fixe pour les lignes de la table */
 }
 
 /* Gestion de la surbrillance */
@@ -211,4 +212,13 @@
 
 .table-dropdown-content a:hover {
     background-color: #ddd;
+}
+
+/* Styles pour ajouter de l'espace autour des éléments de DataTables */
+.dataTables_filter {
+    margin-bottom: 20px; /* Espace sous le champ de recherche */
+}
+
+.dataTables_paginate {
+    margin-top: 10px; 
 }

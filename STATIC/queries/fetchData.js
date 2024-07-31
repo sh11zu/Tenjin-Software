@@ -42,9 +42,14 @@ function publisherRowGenerator(publisher) {
     const imageName = publisher.publisher_name.replace(/[\s'&]/g, '').toLowerCase() + '.png';
     return `
         <td>
-            <a href="#" class="view-edition"><i class="fas fa-search"></i></a>
-            <a href="#" class="edit-edition"><i class="fas fa-edit"></i></a>
-            <a href="#" class="delete-edition"><i class="fas fa-trash"></i></a>
+            <div class="table-dropdown">
+                <button class="dropbtn"><span></span></button>
+                <div class="table-dropdown-content">
+                    <a href="#" class="view-edition"><i class="fas fa-search"></i> View</a>
+                    <a href="#" class="edit-edition"><i class="fas fa-edit"></i> Edit</a>
+                    <a href="#" class="delete-edition"><i class="fas fa-trash"></i> Delete</a>
+                </div>
+            </div>
         </td>
         <td><strong>${publisher.publisher_code}</strong></td>
         <td class="edition-logo-container">
@@ -57,9 +62,14 @@ function publisherRowGenerator(publisher) {
 function sellerRowGenerator(seller) {
     return `
         <td>
-            <a href="#" class="view-vendeur"><i class="fas fa-search"></i></a>
-            <a href="#" class="edit-vendeur"><i class="fas fa-edit"></i></a>
-            <a href="#" class="delete-vendeur"><i class="fas fa-trash"></i></a>
+            <div class="table-dropdown">
+                <button class="dropbtn"><span></span></button>
+                <div class="table-dropdown-content">
+                    <a href="#" class="view-vendeur"><i class="fas fa-search"></i> View</a>
+                    <a href="#" class="edit-vendeur"><i class="fas fa-edit"></i> Edit</a>
+                    <a href="#" class="delete-vendeur"><i class="fas fa-trash"></i> Delete</a>
+                </div>
+            </div>
         </td>
         <td><strong>${seller.seller_name}</strong></td>
         <td><strong>${seller.seller_city}</strong></td>
@@ -69,9 +79,14 @@ function sellerRowGenerator(seller) {
 function customerRowGenerator(customer) {
     return `
         <td>
-            <a href="#" class="view-acheteur"><i class="fas fa-search"></i></a>
-            <a href="#" class="edit-acheteur"><i class="fas fa-edit"></i></a>
-            <a href="#" class="delete-acheteur"><i class="fas fa-trash"></i></a>
+            <div class="table-dropdown">
+                <button class="dropbtn"><span></span></button>
+                <div class="table-dropdown-content">
+                    <a href="#" class="view-acheteur"><i class="fas fa-search"></i> View</a>
+                    <a href="#" class="edit-acheteur"><i class="fas fa-edit"></i> Edit</a>
+                    <a href="#" class="delete-acheteur"><i class="fas fa-trash"></i> Delete</a>
+                </div>
+            </div>
         </td>
         <td>
             <div class="author-info">
@@ -85,9 +100,14 @@ function customerRowGenerator(customer) {
 function authorRowGenerator(author) {
     return `
         <td>
-            <a href="#" class="view-auteur"><i class="fas fa-search"></i></a>
-            <a href="#" class="edit-auteur"><i class="fas fa-edit"></i></a>
-            <a href="#" class="delete-auteur"><i class="fas fa-trash"></i></a>
+            <div class="table-dropdown">
+                <button class="dropbtn"><span></span></button>
+                <div class="table-dropdown-content">
+                    <a href="#" class="view-author"><i class="fas fa-search"></i> View</a>
+                    <a href="#" class="edit-author"><i class="fas fa-edit"></i> Edit</a>
+                    <a href="#" class="delete-author"><i class="fas fa-trash"></i> Delete</a>
+                </div>
+            </div>
         </td>
         <td>
             <div class="author-info">

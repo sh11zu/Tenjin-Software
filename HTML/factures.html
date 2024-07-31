@@ -471,16 +471,7 @@
                 });
             });
 
-            // Gestion de la surbrillance de la ligne entière
-$('#facturesTable tbody').on('mouseenter', 'tr', function () {
-    $(this).addClass('highlight');
-    $(this).find('td').addClass('highlight-cell'); // Ajouter la classe à toutes les cellules
-    $(this).find('td:first-child').addClass('highlight-first-cell'); // Ajouter une classe distincte pour la première cellule
-}).on('mouseleave', 'tr', function () {
-    $(this).removeClass('highlight');
-    $(this).find('td').removeClass('highlight-cell'); // Retirer la classe de toutes les cellules
-    $(this).find('td:first-child').removeClass('highlight-first-cell'); // Retirer la classe distincte pour la première cellule
-});
+            
 
         });
     </script>

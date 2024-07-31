@@ -18,15 +18,18 @@
     flex: 1;
 }
 
+/* Styles pour les conteneurs des logos */
 .edition-logo-container {
     display: flex;
     align-items: center;
 }
 
+/* Styles pour les images */
 .edition-logo-container img {
-    margin-right: 10px;
-    width: 80px; /* Ajuste la taille des logos */
-    height: auto; /* Conserve les proportions des logos */
+    margin-right: 20px;
+    width: 60px; /* Largeur fixe pour les images */
+    height: 60px; /* Hauteur fixe pour les images */
+    object-fit: contain; /* Ajuste l'image pour qu'elle rentre dans le conteneur sans déformation */
 }
 
 .details-listbox {
