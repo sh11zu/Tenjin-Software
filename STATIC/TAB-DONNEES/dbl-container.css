@@ -80,37 +80,3 @@
     font-style: italic;
     color: grey;
 }
-
-
-
-.navigation-tab-buttons button {
-    padding: 10px;
-    cursor: pointer;
-    background-color: #f9faf8; /* couleurs tab inactifs */
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-right: 5px;
-}
-
-.navigation-tab-buttons button.active {
-    background-color: #fff; /* couleur tab actifs */
-    border-bottom: 1px solid #fff;
-}
-
-.tab-content {
-    display: none;
-}
-
-.tab-content.active {
-    display: block;
-}
-
-.navigation-tab-buttons {
-    padding: 10px;
-    cursor: pointer;
-    /* background-color: transparent;
-    border: 1px solid #ddd; */
-    border-radius: 5px;
-    margin-right: 5px;
-    width: 100%;
-}

@@ -36,6 +36,8 @@ document.addEventListener('DOMContentLoaded', function () {
     fetchDataAndInitializeTable('http://localhost:3003/api/sellers', 'sellers-table-body', sellerRowGenerator, 'sellersTable');
     fetchDataAndInitializeTable('http://localhost:3003/api/customers', 'customers-table-body', customerRowGenerator, 'customersTable');
     fetchDataAndInitializeTable('http://localhost:3003/api/authors', 'authors-table-body', authorRowGenerator, 'authorsTable');
+    fetchDataAndInitializeTable('http://localhost:3003/api/publics', 'publics-table-body', publicsRowGenerator, 'publicsTable');
+    fetchDataAndInitializeTable('http://localhost:3003/api/locations', 'locations-table-body', locationsRowGenerator, 'locationsTable');
 });
 
 function publisherRowGenerator(publisher) {
@@ -113,6 +115,46 @@ function authorRowGenerator(author) {
             <div class="author-info">
                 <strong>${author.author_name}</strong>
                 <span class="right-aligned">Scénario ; Mangaka</span>
+            </div>
+        </td>
+    `;
+}
+
+function publicsRowGenerator(publics) {
+    return `
+        <td>
+            <div class="table-dropdown">
+                <button class="dropbtn"><span></span></button>
+                <div class="table-dropdown-content">
+                    <a href="#" class="view-public"><i class="fas fa-search"></i> View</a>
+                    <a href="#" class="edit-public"><i class="fas fa-edit"></i> Edit</a>
+                    <a href="#" class="delete-public"><i class="fas fa-trash"></i> Delete</a>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="author-info">
+                <strong>${publics.public_name}</strong>
+            </div>
+        </td>
+    `;
+}
+
+function locationsRowGenerator(locations) {
+    return `
+        <td>
+            <div class="table-dropdown">
+                <button class="dropbtn"><span></span></button>
+                <div class="table-dropdown-content">
+                    <a href="#" class="view-location"><i class="fas fa-search"></i> View</a>
+                    <a href="#" class="edit-location"><i class="fas fa-edit"></i> Edit</a>
+                    <a href="#" class="delete-location"><i class="fas fa-trash"></i> Delete</a>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="author-info">
+                <strong>${locations.location_id}</strong>
             </div>
         </td>
     `;

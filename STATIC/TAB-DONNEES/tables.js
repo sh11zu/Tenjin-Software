@@ -72,6 +72,91 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    // Table PUBLICS :
+    function initializeDataTablePublics() {
+        if ($.fn.dataTable.isDataTable('#publicsTable')) {
+            $('#publicsTable').DataTable().destroy();
+        }
+
+        $('#publicsTable').DataTable({
+            pageLength: 10,
+            columnDefs: [
+                { orderable: false, targets: 0 }
+            ],
+            language: {
+                url: '/ressources/French.json'
+            }
+        });
+    }
+
+    // Table CATEGORIES REG :
+    function initializeDataTableREG() {
+        if ($.fn.dataTable.isDataTable('#regTable')) {
+            $('#regTable').DataTable().destroy();
+        }
+
+        $('#regTable').DataTable({
+            pageLength: 10,
+            columnDefs: [
+                { orderable: false, targets: 0 }
+            ],
+            language: {
+                url: '/ressources/French.json'
+            }
+        });
+    }
+
+    // Table CATEGORIES SPE :
+    function initializeDataTableSPE() {
+        if ($.fn.dataTable.isDataTable('#speTable')) {
+            $('#speTable').DataTable().destroy();
+        }
+
+        $('#speTable').DataTable({
+            pageLength: 10,
+            columnDefs: [
+                { orderable: false, targets: 0 }
+            ],
+            language: {
+                url: '/ressources/French.json'
+            }
+        });
+    }
+
+    // Table ETATS PARUTION :
+    function initializeDataTableStatus() {
+        if ($.fn.dataTable.isDataTable('#statusTable')) {
+            $('#statusTable').DataTable().destroy();
+        }
+
+        $('#statusTable').DataTable({
+            pageLength: 10,
+            columnDefs: [
+                { orderable: false, targets: 0 }
+            ],
+            language: {
+                url: '/ressources/French.json'
+            }
+        });
+    }
+
+    // Table EMPLACEMENTS :
+    function initializeDataTableLocations() {
+        if ($.fn.dataTable.isDataTable('#locationsTable')) {
+            $('#locationsTable').DataTable().destroy();
+        }
+
+        $('#locationsTable').DataTable({
+            pageLength: 10,
+            columnDefs: [
+                { orderable: false, targets: 0 }
+            ],
+            language: {
+                url: '/ressources/French.json'
+            }
+        });
+    }
+
 // -------------------------------------------------------------------------------------------------
 // Fonctions qui gèrent les Pop-Up SweetAlert :
 // -------------------------------------------------------------------------------------------------
@@ -226,6 +311,201 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    // Table PUBLICS :
+    function initializeSweetAlertPublics() {
+        $(document).on('click', '.delete-public', function (e) {
+            e.preventDefault();
+            Swal.fire({
+                icon: 'error',
+                title: 'Erreur',
+                text: 'Vous n\'avez pas les autorisations pour supprimer un vendeur.',
+            });
+        });
+    
+        $(document).on('click', '.edit-public', function (e) {
+            e.preventDefault();
+            Swal.fire({
+                icon: 'error',
+                title: 'Erreur',
+                text: 'Vous n\'avez pas les autorisations pour modifier un vendeur.',
+            });
+        });
+    
+        $(document).on('click', '.view-public', function (e) {
+            e.preventDefault();
+            
+            // Récupérer les données de la ligne cliquée
+            const row = $(this).closest('tr');
+            const id = row.find('td:eq(1)').text().trim();
+            const localisation = row.find('td:eq(2)').text().trim();
+            
+            Swal.fire({
+                title: `Détail du vendeur`,
+                html: `
+                    <p><strong>Vendeur :</strong> ${id}</p>
+                    <p><strong>Ville/Pays :</strong> ${localisation}</p>
+                `,
+                icon: 'info',
+            });
+        });
+    }
+
+    // Table REG :
+    function initializeSweetAlertREG() {
+        $(document).on('click', '.delete-reg', function (e) {
+            e.preventDefault();
+            Swal.fire({
+                icon: 'error',
+                title: 'Erreur',
+                text: 'Vous n\'avez pas les autorisations pour supprimer un vendeur.',
+            });
+        });
+    
+        $(document).on('click', '.edit-reg', function (e) {
+            e.preventDefault();
+            Swal.fire({
+                icon: 'error',
+                title: 'Erreur',
+                text: 'Vous n\'avez pas les autorisations pour modifier un vendeur.',
+            });
+        });
+    
+        $(document).on('click', '.view-reg', function (e) {
+            e.preventDefault();
+            
+            // Récupérer les données de la ligne cliquée
+            const row = $(this).closest('tr');
+            const id = row.find('td:eq(1)').text().trim();
+            const localisation = row.find('td:eq(2)').text().trim();
+            
+            Swal.fire({
+                title: `Détail du vendeur`,
+                html: `
+                    <p><strong>Vendeur :</strong> ${id}</p>
+                    <p><strong>Ville/Pays :</strong> ${localisation}</p>
+                `,
+                icon: 'info',
+            });
+        });
+    }
+
+    // Table SPE :
+    function initializeSweetAlertSPE() {
+        $(document).on('click', '.delete-spe', function (e) {
+            e.preventDefault();
+            Swal.fire({
+                icon: 'error',
+                title: 'Erreur',
+                text: 'Vous n\'avez pas les autorisations pour supprimer un vendeur.',
+            });
+        });
+    
+        $(document).on('click', '.edit-spe', function (e) {
+            e.preventDefault();
+            Swal.fire({
+                icon: 'error',
+                title: 'Erreur',
+                text: 'Vous n\'avez pas les autorisations pour modifier un vendeur.',
+            });
+        });
+    
+        $(document).on('click', '.view-spe', function (e) {
+            e.preventDefault();
+            
+            // Récupérer les données de la ligne cliquée
+            const row = $(this).closest('tr');
+            const id = row.find('td:eq(1)').text().trim();
+            const localisation = row.find('td:eq(2)').text().trim();
+            
+            Swal.fire({
+                title: `Détail du vendeur`,
+                html: `
+                    <p><strong>Vendeur :</strong> ${id}</p>
+                    <p><strong>Ville/Pays :</strong> ${localisation}</p>
+                `,
+                icon: 'info',
+            });
+        });
+    }
+
+    // Table ETATS DE PARUTION :
+    function initializeSweetAlertStatus() {
+        $(document).on('click', '.delete-status', function (e) {
+            e.preventDefault();
+            Swal.fire({
+                icon: 'error',
+                title: 'Erreur',
+                text: 'Vous n\'avez pas les autorisations pour supprimer un vendeur.',
+            });
+        });
+    
+        $(document).on('click', '.edit-status', function (e) {
+            e.preventDefault();
+            Swal.fire({
+                icon: 'error',
+                title: 'Erreur',
+                text: 'Vous n\'avez pas les autorisations pour modifier un vendeur.',
+            });
+        });
+    
+        $(document).on('click', '.view-status', function (e) {
+            e.preventDefault();
+            
+            // Récupérer les données de la ligne cliquée
+            const row = $(this).closest('tr');
+            const id = row.find('td:eq(1)').text().trim();
+            const localisation = row.find('td:eq(2)').text().trim();
+            
+            Swal.fire({
+                title: `Détail du vendeur`,
+                html: `
+                    <p><strong>Vendeur :</strong> ${id}</p>
+                    <p><strong>Ville/Pays :</strong> ${localisation}</p>
+                `,
+                icon: 'info',
+            });
+        });
+    }
+
+    // Table EMPLACEMENTS :
+    function initializeSweetAlertLocations() {
+        $(document).on('click', '.delete-location', function (e) {
+            e.preventDefault();
+            Swal.fire({
+                icon: 'error',
+                title: 'Erreur',
+                text: 'Vous n\'avez pas les autorisations pour supprimer un vendeur.',
+            });
+        });
+    
+        $(document).on('click', '.edit-location', function (e) {
+            e.preventDefault();
+            Swal.fire({
+                icon: 'error',
+                title: 'Erreur',
+                text: 'Vous n\'avez pas les autorisations pour modifier un vendeur.',
+            });
+        });
+    
+        $(document).on('click', '.view-location', function (e) {
+            e.preventDefault();
+            
+            // Récupérer les données de la ligne cliquée
+            const row = $(this).closest('tr');
+            const id = row.find('td:eq(1)').text().trim();
+            const localisation = row.find('td:eq(2)').text().trim();
+            
+            Swal.fire({
+                title: `Détail du vendeur`,
+                html: `
+                    <p><strong>Vendeur :</strong> ${id}</p>
+                    <p><strong>Ville/Pays :</strong> ${localisation}</p>
+                `,
+                icon: 'info',
+            });
+        });
+    }
+
 // -------------------------------------------------------------------------------------------------
 // Fonctions qui gèrent les surbrillances des lignes :
 // -------------------------------------------------------------------------------------------------
@@ -282,6 +562,71 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    // Table PUBLICS :
+    function initializeHighlightPublics() {
+        $('#publicsTable tbody').on('mouseenter', 'tr', function () {
+            $(this).addClass('highlight');
+            $(this).find('td').addClass('highlight-cell');
+            $(this).find('td:first-child').addClass('highlight-first-cell');
+        }).on('mouseleave', 'tr', function () {
+            $(this).removeClass('highlight');
+            $(this).find('td').removeClass('highlight-cell');
+            $(this).find('td:first-child').removeClass('highlight-first-cell');
+        });
+    }
+
+    // Table CATEGORIES REG :
+    function initializeHighlightREG() {
+        $('#regTable tbody').on('mouseenter', 'tr', function () {
+            $(this).addClass('highlight');
+            $(this).find('td').addClass('highlight-cell');
+            $(this).find('td:first-child').addClass('highlight-first-cell');
+        }).on('mouseleave', 'tr', function () {
+            $(this).removeClass('highlight');
+            $(this).find('td').removeClass('highlight-cell');
+            $(this).find('td:first-child').removeClass('highlight-first-cell');
+        });
+    }
+
+    // Table CATEGORIES SPE :
+    function initializeHighlightSPE() {
+        $('#speTable tbody').on('mouseenter', 'tr', function () {
+            $(this).addClass('highlight');
+            $(this).find('td').addClass('highlight-cell');
+            $(this).find('td:first-child').addClass('highlight-first-cell');
+        }).on('mouseleave', 'tr', function () {
+            $(this).removeClass('highlight');
+            $(this).find('td').removeClass('highlight-cell');
+            $(this).find('td:first-child').removeClass('highlight-first-cell');
+        });
+    }
+
+    // Table ETATS DE PARUTION :
+    function initializeHighlightStatus() {
+        $('#statusTable tbody').on('mouseenter', 'tr', function () {
+            $(this).addClass('highlight');
+            $(this).find('td').addClass('highlight-cell');
+            $(this).find('td:first-child').addClass('highlight-first-cell');
+        }).on('mouseleave', 'tr', function () {
+            $(this).removeClass('highlight');
+            $(this).find('td').removeClass('highlight-cell');
+            $(this).find('td:first-child').removeClass('highlight-first-cell');
+        });
+    }
+
+    // Table EMPLACEMENTS :
+    function initializeHighlightLocations() {
+        $('#locationsTable tbody').on('mouseenter', 'tr', function () {
+            $(this).addClass('highlight');
+            $(this).find('td').addClass('highlight-cell');
+            $(this).find('td:first-child').addClass('highlight-first-cell');
+        }).on('mouseleave', 'tr', function () {
+            $(this).removeClass('highlight');
+            $(this).find('td').removeClass('highlight-cell');
+            $(this).find('td:first-child').removeClass('highlight-first-cell');
+        });
+    }
+
 // -------------------------------------------------------------------------------------------------
 // Fonctions qui gèrent les DropDown :
 // -------------------------------------------------------------------------------------------------
@@ -320,6 +665,11 @@ document.addEventListener("DOMContentLoaded", function() {
         initializeDataTableEditions();
         initializeDataTableAcheteurs();
         initializeDataTableVendeurs();
+        initializeDataTablePublics();
+        initializeDataTableREG();
+        initializeDataTableSPE();
+        initializeDataTableStatus();
+        initializeDataTableLocations();
     }
 
     function initializeSweetAlert() {
@@ -327,6 +677,11 @@ document.addEventListener("DOMContentLoaded", function() {
         initializeSweetAlertEditions();
         initializeSweetAlertAcheteurs();
         initializeSweetAlertVendeurs();
+        initializeSweetAlertPublics();
+        initializeSweetAlertREG();
+        initializeSweetAlertSPE();
+        initializeSweetAlertStatus();
+        initializeSweetAlertLocations();
     }
 
     function initializeHighlight() {
@@ -334,6 +689,11 @@ document.addEventListener("DOMContentLoaded", function() {
         initializeHighlightEditions();
         initializeHighlightAcheteurs();
         initializeHighlightVendeurs();
+        initializeHighlightPublics();
+        initializeHighlightREG();
+        initializeHighlightSPE();
+        initializeHighlightStatus();
+        initializeHighlightLocations();
     }
 
     function initializeAll() {

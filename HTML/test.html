@@ -6,8 +6,8 @@
     <title>Factures</title>
     <link rel="stylesheet" href="/STATIC/styles.css">
     <link rel="stylesheet" href="/STATIC/sidebar.css">
-    <link rel="stylesheet" href="/STATIC/tables.css">
     <link rel="stylesheet" href="/STATIC/TAB-DONNEES/dbl-container.css">
+    <link rel="stylesheet" href="/STATIC/tables.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
@@ -148,10 +148,10 @@
                 <button class="navtab-publics active" onclick="showTab('publicsTable')">Publics</button>
                 <button class="navtab-reg" onclick="showTab('regTable')">Catégories REG</button>
                 <button class="navtab-spe" onclick="showTab('speTable')">Catégories SPE</button>
-                <button class="navtab-status" onclick="showTab('statusTable')">Statuts</button>
+                <button class="navtab-status" onclick="showTab('statusTable')">États de parution</button>
                 <button class="navtab-locations" onclick="showTab('locationsTable')">Emplacements</button>
             </div>
-
+    
             <main class="main-content">
                 <div class="left-content">
                     <table id="publicsTable" class="publics-table display tab-content active">
@@ -161,36 +161,11 @@
                                 <th>Publics</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div class="table-dropdown">
-                                        <button class="dropbtn"><span></span></button>
-                                        <div class="table-dropdown-content">
-                                            <a href="#" class="view-public"><i class="fas fa-search"></i> View</a>
-                                            <a href="#" class="edit-public"><i class="fas fa-edit"></i> Edit</a>
-                                            <a href="#" class="delete-public"><i class="fas fa-trash"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Seinen</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="table-dropdown">
-                                        <button class="dropbtn"><span></span></button>
-                                        <div class="table-dropdown-content">
-                                            <a href="#" class="view-public"><i class="fas fa-search"></i> View</a>
-                                            <a href="#" class="edit-public"><i class="fas fa-edit"></i> Edit</a>
-                                            <a href="#" class="delete-public"><i class="fas fa-trash"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Hentai</td>
-                            </tr>
-                        </tbody>
+                        <tbody id="publics-table-body">
+                        <!-- Les données des publics seront insérées ici par JavaScript -->
+                    </tbody>
                     </table>
-
+    
                     <table id="regTable" class="reg-table display tab-content">
                         <thead>
                             <tr>
@@ -199,113 +174,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    <div class="table-dropdown">
-                                        <button class="dropbtn"><span></span></button>
-                                        <div class="table-dropdown-content">
-                                            <a href="#" class="view-reg"><i class="fas fa-search"></i> View</a>
-                                            <a href="#" class="edit-reg"><i class="fas fa-edit"></i> Edit</a>
-                                            <a href="#" class="delete-reg"><i class="fas fa-trash"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Volume simple</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="table-dropdown">
-                                        <button class="dropbtn"><span></span></button>
-                                        <div class="table-dropdown-content">
-                                            <a href="#" class="view-reg"><i class="fas fa-search"></i> View</a>
-                                            <a href="#" class="edit-reg"><i class="fas fa-edit"></i> Edit</a>
-                                            <a href="#" class="delete-reg"><i class="fas fa-trash"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Volume double</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="table-dropdown">
-                                        <button class="dropbtn"><span></span></button>
-                                        <div class="table-dropdown-content">
-                                            <a href="#" class="view-reg"><i class="fas fa-search"></i> View</a>
-                                            <a href="#" class="edit-reg"><i class="fas fa-edit"></i> Edit</a>
-                                            <a href="#" class="delete-reg"><i class="fas fa-trash"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>One-shot</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="table-dropdown">
-                                        <button class="dropbtn"><span></span></button>
-                                        <div class="table-dropdown-content">
-                                            <a href="#" class="view-reg"><i class="fas fa-search"></i> View</a>
-                                            <a href="#" class="edit-reg"><i class="fas fa-edit"></i> Edit</a>
-                                            <a href="#" class="delete-reg"><i class="fas fa-trash"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Perfect Edition</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="table-dropdown">
-                                        <button class="dropbtn"><span></span></button>
-                                        <div class="table-dropdown-content">
-                                            <a href="#" class="view-reg"><i class="fas fa-search"></i> View</a>
-                                            <a href="#" class="edit-reg"><i class="fas fa-edit"></i> Edit</a>
-                                            <a href="#" class="delete-reg"><i class="fas fa-trash"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Light Novel</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="table-dropdown">
-                                        <button class="dropbtn"><span></span></button>
-                                        <div class="table-dropdown-content">
-                                            <a href="#" class="view-reg"><i class="fas fa-search"></i> View</a>
-                                            <a href="#" class="edit-reg"><i class="fas fa-edit"></i> Edit</a>
-                                            <a href="#" class="delete-reg"><i class="fas fa-trash"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Guidebook</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="table-dropdown">
-                                        <button class="dropbtn"><span></span></button>
-                                        <div class="table-dropdown-content">
-                                            <a href="#" class="view-reg"><i class="fas fa-search"></i> View</a>
-                                            <a href="#" class="edit-reg"><i class="fas fa-edit"></i> Edit</a>
-                                            <a href="#" class="delete-reg"><i class="fas fa-trash"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Offre découverte</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="table-dropdown">
-                                        <button class="dropbtn"><span></span></button>
-                                        <div class="table-dropdown-content">
-                                            <a href="#" class="view-reg"><i class="fas fa-search"></i> View</a>
-                                            <a href="#" class="edit-reg"><i class="fas fa-edit"></i> Edit</a>
-                                            <a href="#" class="delete-reg"><i class="fas fa-trash"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Pack Intégrale</td>
-                            </tr>
+                            <!-- Les données des catégories REG seront insérées ici par JavaScript -->
                         </tbody>
                     </table>
-
+    
                     <table id="speTable" class="spe-table display tab-content">
                         <thead>
                             <tr>
@@ -314,72 +186,33 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    <div class="table-dropdown">
-                                        <button class="dropbtn"><span></span></button>
-                                        <div class="table-dropdown-content">
-                                            <a href="#" class="view-spe"><i class="fas fa-search"></i> View</a>
-                                            <a href="#" class="edit-spe"><i class="fas fa-edit"></i> Edit</a>
-                                            <a href="#" class="delete-spe"><i class="fas fa-trash"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Coffret</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="table-dropdown">
-                                        <button class="dropbtn"><span></span></button>
-                                        <div class="table-dropdown-content">
-                                            <a href="#" class="view-spe"><i class="fas fa-search"></i> View</a>
-                                            <a href="#" class="edit-spe"><i class="fas fa-edit"></i> Edit</a>
-                                            <a href="#" class="delete-spe"><i class="fas fa-trash"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Starter Pack</td>
-                            </tr>
+                            <!-- Les données des catégories SPE seront insérées ici par JavaScript -->
                         </tbody>
                     </table>
-
+    
                     <table id="statusTable" class="status-table display tab-content">
                         <thead>
                             <tr>
                                 <th></th>
-                                <th>Etats de parution</th>
+                                <th>États de parution</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    <div class="table-dropdown">
-                                        <button class="dropbtn"><span></span></button>
-                                        <div class="table-dropdown-content">
-                                            <a href="#" class="view-status"><i class="fas fa-search"></i> View</a>
-                                            <a href="#" class="edit-status"><i class="fas fa-edit"></i> Edit</a>
-                                            <a href="#" class="delete-status"><i class="fas fa-trash"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Série en cours</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="table-dropdown">
-                                        <button class="dropbtn"><span></span></button>
-                                        <div class="table-dropdown-content">
-                                            <a href="#" class="view-status"><i class="fas fa-search"></i> View</a>
-                                            <a href="#" class="edit-status"><i class="fas fa-edit"></i> Edit</a>
-                                            <a href="#" class="delete-status"><i class="fas fa-trash"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Série terminée</td>
-                            </tr>
+                            <!-- Les données des états de parution seront insérées ici par JavaScript -->
                         </tbody>
                     </table>
-                
+    
+                    <table id="locationsTable" class="locations-table display tab-content">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Emplacements</th>
+                            </tr>
+                        </thead>
+                        <tbody id="locations-table-body">
+                            <!-- Les données des emplacements seront insérées ici par JavaScript -->
+                        </tbody>
+                    </table>
                 </div>
                 <div class="right-content">
                     <div class="card">
@@ -412,32 +245,77 @@
         </div>
     </div>
     
+    
+    
     <script src="/STATIC/script.js"></script>
     <script src="/STATIC/sidebar.js"></script>
-    <script src="/STATIC/TAB-DONNEES/tables.js"></script>
+    <script src="/STATIC/queries/fetchData.js"></script>
+    <script src="/STATIC/TAB-DONNEES/tables-others.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
-    <script>
-        function showTab(tableId) {
-            const tabs = document.querySelectorAll('.tab-content');
-            const buttons = document.querySelectorAll('.navigation-tab-buttons button');
-            tabs.forEach(tab => {
-                if (tab.id === tableId) {
-                    tab.classList.add('active');
-                } else {
-                    tab.classList.remove('active');
-                }
-            });
-            buttons.forEach(button => {
-                if (button.classList.contains(`navtab-${tableId.replace('Table', '').toLowerCase()}`)) {
-                    button.classList.add('active');
-                } else {
-                    button.classList.remove('active');
-                }
-            });
-        }
-    </script>
     <button class="floating-btn">+</button>
+    
+    <!-- <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let initializedTables = {};
+    
+            function showTab(tableId) {
+                // List of tables to hide
+                const tablesToHide = ['publicsTable', 'regTable', 'speTable', 'statusTable', 'locationsTable'];
+                
+                // Hide other tables
+                tablesToHide.forEach(tab => {
+                    document.getElementById(tab).classList.remove('active');
+                    const wrapper = document.getElementById(`${tab}_wrapper`);
+                    if (wrapper) {
+                        wrapper.style.display = 'none';
+                    }
+                });
+                
+                // Show the selected table
+                document.getElementById(tableId).classList.add('active');
+                const wrapper = document.getElementById(`${tableId}_wrapper`);
+                if (wrapper) {
+                    wrapper.style.display = 'block';
+                }
+    
+                // Initialize the table if not already done
+                if (!initializedTables[tableId]) {
+                    switch (tableId) {
+                        case 'publicsTable':
+                            initializeDataTablePublics();
+                            break;
+                        case 'regTable':
+                            initializeDataTableREG();
+                            break;
+                        case 'speTable':
+                            initializeDataTableSPE();
+                            break;
+                        case 'statusTable':
+                            initializeDataTableStatus();
+                            break;
+                        case 'locationsTable':
+                            initializeDataTableLocations();
+                            break;
+                    }
+                    initializedTables[tableId] = true;
+                }
+            }
+    
+            document.querySelectorAll('.navigation-tab-buttons button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const tableId = this.getAttribute('onclick').match(/'(.*)'/)[1];
+                    showTab(tableId);
+                });
+            });
+    
+            // Initialiser la page avec la table "publicsTable" visible
+            showTab('publicsTable');
+        });
+    </script> -->
+    
+    
+    
 </body>
 </html>
