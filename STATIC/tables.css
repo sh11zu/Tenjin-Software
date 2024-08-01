@@ -4,7 +4,12 @@
 .auteurs-table td:first-child,
 .acheteurs-table td:first-child,
 .vendeurs-table td:first-child,
-.editions-table td:first-child {
+.editions-table td:first-child,
+.publics-table td:first-child,
+.reg-table td:first-child,
+.spe-table td:first-child,
+.status-table td:first-child,
+.locations-table td:first-child {
     background-color: #ffffff !important;
 }
 
@@ -13,7 +18,12 @@
 .auteurs-table td:first-child, .auteurs-table th:first-child,
 .acheteurs-table td:first-child, .acheteurs-table th:first-child,
 .vendeurs-table td:first-child, .vendeurs-table th:first-child,
-.editions-table td:first-child, .editions-table th:first-child {
+.editions-table td:first-child, .editions-table th:first-child,
+.publics-table td:first-child, .publics-table th:first-child,
+.reg-table td:first-child, .reg-table th:first-child,
+.spe-table td:first-child, .spe-table th:first-child,
+.status-table td:first-child, .status-table th:first-child,
+.locations-table td:first-child, .locations-table th:first-child {
     width: 50px !important; /* Réduction de la taille de la première colonne */
     text-align: left;
     padding-left: 20px;
@@ -24,14 +34,22 @@
 .auteurs-table a, .auteurs-table i,
 .acheteurs-table a, .acheteurs-table i,
 .vendeurs-table a, .vendeurs-table i,
-.editions-table a, .editions-table i {
+.editions-table a, .editions-table i,
+.publics-table a, .publics-table i,
+.reg-table a, .reg-table i,
+.spe-table a, .spe-table i,
+.status-table a, .status-table i,
+.locations-table a, .locations-table i {
     margin-right: 5px;
     color: #191b06;
 }
 
 .series-table thead th, .factures-table thead th,
 .acheteurs-table thead th, .vendeurs-table thead th,
-.auteurs-table thead th, .editions-table thead th {
+.auteurs-table thead th, .editions-table thead th,
+.publics-table thead th, .reg-table thead th,
+.spe-table thead th, .status-table thead th,
+.locations-table thead th {
     background-color: #06141B;
     color: #CCD0CF;
     font-weight: bold;
@@ -44,7 +62,12 @@
 .auteurs-table tbody td, .auteurs-table thead th,
 .acheteurs-table tbody td, .acheteurs-table thead th,
 .vendeurs-table tbody td, .vendeurs-table thead th,
-.editions-table tbody td, .editions-table thead th {
+.editions-table tbody td, .editions-table thead th,
+.publics-table tbody td, .publics-table thead th,
+.reg-table tbody td, .reg-table thead th,
+.spe-table tbody td, .spe-table thead th,
+.status-table tbody td, .status-table thead th,
+.locations-table tbody td, .locations-table thead th {
     border: 1px solid #dee2e6;
     padding: 8px;
 }
@@ -54,7 +77,12 @@
 .auteurs-table tbody td,
 .acheteurs-table tbody td,
 .vendeurs-table tbody td,
-.editions-table tbody td {
+.editions-table tbody td,
+.publics-table tbody td,
+.reg-table tbody td,
+.spe-table tbody td,
+.status-table tbody td,
+.locations-table tbody td {
     border-top: 1px solid #dee2e6; /* Bordure horizontale */
     border-bottom: 0px solid #dee2e6; /* Bordure horizontale */
     border-left: none; /* Pas de bordure verticale */
@@ -64,10 +92,14 @@
 /* Couleur de fond pour toutes les lignes du corps */
 .series-table tbody tr, .factures-table tbody tr,
 .acheteurs-table tbody tr, .vendeurs-table tbody tr,
-.auteurs-table tbody tr, .editions-table tbody tr {
+.auteurs-table tbody tr, .editions-table tbody tr,
+.publics-table tbody tr, .reg-table tbody tr,
+.spe-table tbody tr, .status-table tbody tr,
+.locations-table tbody tr {
     background-color: #ffffff !important; /* Blanc pour toutes les lignes */
     height: 60px; /* Hauteur fixe pour les lignes de la table */
 }
+
 
 /* Gestion de la surbrillance */
 .highlight td, .highlight td:first-child {
@@ -82,7 +114,8 @@
 }
 
 /* Ajout de box-shadow aux tables */
-.series-table, .factures-table, .auteurs-table, .acheteurs-table, .vendeurs-table, .editions-table {
+.series-table, .factures-table, .auteurs-table, .acheteurs-table, .vendeurs-table, .editions-table,
+.publics-table, .reg-table, .spe-table, .status-table, .locations-table {
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
 }
 
