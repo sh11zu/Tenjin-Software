@@ -9,7 +9,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
@@ -17,5 +16,6 @@
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "mysql": "^2.18.1"
-  }
+  },
+  "description": ""
 }

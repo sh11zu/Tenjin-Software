@@ -11,8 +11,8 @@ app.use(express.json());
 // Configurer la connexion à la base de données
 const db = mysql.createConnection({
   host: 'localhost',
-  user: 'root',
-  password: '',
+  user: 'prm_root',
+  password: 'Formation13@',
   database: 'tenjin_bdd'
 });
 

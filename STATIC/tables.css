@@ -264,16 +264,17 @@
     padding: 10px;
     background-color: #ffffff; /* couleurs tab inactifs */
     border: none;
+    font-size: 16px;
     /* margin-right: 5px; */
 }
 
-.navigation-tab-buttons button:hover {
-    cursor: pointer;
-    background-color: #000000; /* couleurs tab inactifs */
-}
 
-.navigation-tab-buttons button.active {
-    background-color: #fff; /* couleur tab actifs */
+.navigation-tab-buttons button:hover,
+.navigation-tab-buttons button.selected {
+    cursor: pointer;
+    background-color: #000000; /* couleur tab actifs */
+    font-weight: bold;
+    color: #ddd;
     border-bottom: 1px solid #fff;
 }
 
@@ -288,7 +289,7 @@
 .navigation-tab-buttons {
     display: flex;
     justify-content: space-between;
-    gap: 260px; /* Ajouter de l'espace entre les boutons */
+    gap: 200px; /* Ajouter de l'espace entre les boutons */
     padding: 0 20px;
     border-bottom: 1px solid #ddd;
     /* border-radius: 5px; */
@@ -298,11 +299,11 @@
 }
 
 
-.navigation-tab-buttons::before,
+/* .navigation-tab-buttons::before,
 .navigation-tab-buttons::after {
     content: '';
     flex: 1;
-}
+} */
 
 
 
@@ -323,10 +324,184 @@
     display: table;
 }
 
-.dataTables_wrapper {
+/* .dataTables_wrapper {
     display: none;
 }
 
 .dataTables_wrapper.active {
     display: block;
+} */
+
+
+/* ---------------------------------
+SWEET ALERT STYLES
+--------------------------------- */
+
+.viewTitle {
+    color: #06141B;
+    text-align: left;
+    border-bottom: 1px solid #000000;
+    height: 180px;
+}
+
+.popupHeight {
+    max-height: 700px;
+    max-width: 1200px;
+    height: 100%;
+    width: 100%;
+}
+
+.popupHTML {
+    text-align: left !important;
+}
+
+.columns-container {
+    display: flex;
+    justify-content: space-between;
+    /* padding-bottom: 50px; */
+    margin-top: -20px !important;
+}
+.column {
+    flex: 1;
+    padding: 0 10px;
+}
+
+.columnID {
+    /* flex: 1; */
+    padding: 0 10px;
+    margin-right: 15px;
+}
+
+.columnInfos {
+    /* flex: 1; */
+    padding: 0 10px;
+    margin-right: 15px;
+}
+
+.columnAuteurs {
+    flex: 1;
+    padding: 0 10px;
+    margin-right: 100px;
+    
+    /* padding-right: 100px; */
+}
+
+.vertical-divider {
+    width: 1px;
+    background-color: #ccc;
+    margin: 0 10px;
+}
+.column-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.column p {
+    margin: 5px 0;
+    font-size: 1rem;
+    color: #666;
+     display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.column p img {
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.flags-column {
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.columns-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    align-items: flex-start;
+
+}
+
+.title-text {
+    margin-bottom: 10px;
+    font-size: 1.2rem; /* Taille de la police pour "Série :" */
+}
+
+
+
+
+.title-text.abandonnee {
+    color: #d33; /* Couleur rouge */
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 12px;
+    background-color: #ff000028; /* Couleur de fond par défaut */
+    /* color: #00796b; Couleur du texte par défaut */
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+
+
+
+
+}
+.title-text.terminee {
+    color: #00ca2f; /* Couleur verte */
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 12px;
+    background-color: #00ff0d28; /* Couleur de fond par défaut */
+    /* color: #00796b; Couleur du texte par défaut */
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+}
+.title-text.encours {
+    color: #0077ff; /* Couleur bleue */
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 12px;
+    background-color: #ff000028; /* Couleur de fond par défaut */
+    /* color: #00796b; Couleur du texte par défaut */
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+}
+.title-text.enpause {
+    color: #ff7b00; /* Couleur bleue */
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 12px;
+    background-color: #ff000028; /* Couleur de fond par défaut */
+    /* color: #00796b; Couleur du texte par défaut */
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+}
+
+.serie-name {
+    font-size: 1.5rem; /* Taille de la police pour le nom de la série */
+    color: #4A5C6A; /* Couleur pour le nom de la série */
+    margin-top: -10px; /* Réduire l'espace entre le titre et le nom de la série */
+    
+}
+.top-right-icon {
+    position: absolute;
+    top: 10px;
+    right: 50px;
+}
+.serie-name {
+    font-size: 1.8rem; /* Taille de la police pour le nom de la série */
+    color: #4A5C6A; /* Couleur pour le nom de la série */
 }

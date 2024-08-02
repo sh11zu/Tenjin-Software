@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet"> -->
 </head>
 <body>
     <div class="sidebar" id="sidebar">
@@ -221,7 +222,7 @@
                         <td>Ai Uzuki</td>
                         <td>Hagu Koshijima</td>
                         <td>✖</td>
-                        <td>terminée</td>
+                        <td>en cours</td>
                         <td>Japon</td>
                         <td>2002</td>
                         <td>2008</td>
@@ -242,7 +243,7 @@
                         <td>Yoshitoki Oima</td>
                         <td>✖</td>
                         <td>✖</td>
-                        <td>terminée</td>
+                        <td>en pause</td>
                         <td>Japon</td>
                         <td>2020</td>
                         <td>2023</td>
@@ -326,27 +327,87 @@
                 const anneeVo = row.data('annee-vo');
                 const anneeVf = row.data('annee-vf');
                 const prixEditeur = row.data('prix-editeur');
+
+                // Définir le statut de parution pour la mise en forme
+                let parutionColorClass = '';
+                if (parution === 'abandonnée') {
+                    parutionColorClass = 'abandonnee';
+                } else if (parution === 'en cours') {
+                    parutionColorClass = 'encours';
+                } else if (parution === 'terminée') {
+                    parutionColorClass = 'terminee';
+                } else if (parution === 'en pause') {
+                    parutionColorClass = 'enpause';
+                }
+
+                // Drapeaux des pays
+                const franceFlag = '<img src="/images/icons/france-flag.png" alt="France" style="width:20px; height:20px;">';
+                const japanFlag = '<img src="/images/icons/japan-flag.png" alt="Japan" style="width:20px; height:20px;">';
+                const paysFlag = pays === 'France' ? franceFlag : japanFlag;
                 
                 Swal.fire({
-                    title: 'Détail de la série',
-                    html: `
-                        <p><strong>ID:</strong> ${id}</p>
-                        <p><strong>Code série:</strong> ${codeserie}</p>
-                        <p><strong>Série:</strong> ${serie}</p>
-                        <p><strong>Public:</strong> ${public}</p>
-                        <p><strong>Edition:</strong> ${edition}</p>
-                        <p><strong>Scénario:</strong> ${scenario}</p>
-                        <p><strong>Mangaka:</strong> ${mangaka}</p>
-                        <p><strong>Chara-design:</strong> ${charadesign}</p>
-                        <p><strong>Histoire originale:</strong> ${histoireOriginale}</p>
-                        <p><strong>Parution:</strong> ${parution}</p>
-                        <p><strong>Pays:</strong> ${pays}</p>
-                        <p><strong>Année VO:</strong> ${anneeVo}</p>
-                        <p><strong>Année VF:</strong> ${anneeVf}</p>
-                        <p><strong>Prix editeur:</strong> ${prixEditeur}</p>
+                    title: `
+                        <div class="title-container">
+                            <span class="title-text ${parutionColorClass}">Série ${parution}</span>
+                            <span class="serie-name">${serie}</span>
+                        </div>
+                        <div class="top-right-icon">
+                            <i class="swal2-icon swal2-info swal2-icon-show" style="display: flex;"></i>
+                        </div>
                     `,
-                    icon: 'info',
-                });
+                    html: `
+                        <div class="columns-container">
+                            <div class="columnID">
+                                <h3 class="column-title">Identification</h3>
+                                <p><strong>ID :</strong> ${id}</p>
+                                <p><strong>Code série :</strong> ${codeserie}</p>
+                            </div>
+                            <div class="vertical-divider"></div>
+                            <div class="columnInfos">
+                                <h3 class="column-title">Informations série</h3>
+                                <p><strong>Public :</strong> ${public}</p>
+                                <p><strong>Edition :</strong> ${edition}</p>
+                                <p><strong>Parution :</strong> ${parution}</p>
+                                <p><strong>Prix éditeur :</strong> ${prixEditeur}</p>
+                            </div>
+                            <div class="vertical-divider"></div>
+                            <div class="columnAuteurs">
+                                <h3 class="column-title">Auteurs</h3>
+                                <p><strong>Scénario :</strong> ${scenario}</p>
+                                <p><strong>Mangaka :</strong> ${mangaka}</p>
+                                <p><strong>Chara-design :</strong> ${charadesign}</p>
+                                <p><strong>Histoire originale :</strong> ${histoireOriginale}</p>
+                            </div>
+                            <div class="vertical-divider"></div>
+                            <div class="column">
+                                <h3 class="column-title">Origine</h3>
+                               <table>
+                                <tr>
+                                    <td><strong>Pays :</strong></td>
+                                    <td class="flags-column">${paysFlag} ${pays}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Année VO :</strong></td>
+                                    <td class="flags-column">${paysFlag} ${anneeVo}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Année VF :</strong></td>
+                                    <td class="flags-column">${franceFlag} ${anneeVf}</td>
+                                </tr>
+                            </table>
+                            </div>
+                        </div>
+                    `,
+                customClass: {
+                    title: 'viewTitle',
+                    popup: 'popupHeight',
+                    htmlContainer: 'popupHTML'
+                },
+                // width: 300,
+                height: 5,
+                // padding: '3em',
+                color: '#4A5C6A',
+            });
             });
 
             // Gestion de la surbrillance de la ligne entière

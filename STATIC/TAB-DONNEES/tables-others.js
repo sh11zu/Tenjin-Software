@@ -32,6 +32,12 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById(`${tableId}_wrapper`).style.display = 'block';
 
         initializeDataTable(tableId);
+
+        // Met à jour les boutons de navigation
+        document.querySelectorAll('.navigation-tab-buttons button').forEach(button => {
+            button.classList.remove('selected');
+        });
+        document.querySelector(`.navtab-${tableId.replace('Table', '').toLowerCase()}`).classList.add('selected');
     }
 
     document.querySelectorAll('.navigation-tab-buttons button').forEach(button => {
