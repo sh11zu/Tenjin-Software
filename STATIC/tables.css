@@ -97,20 +97,7 @@
 .spe-table tbody tr, .status-table tbody tr,
 .locations-table tbody tr {
     background-color: #ffffff !important; /* Blanc pour toutes les lignes */
-    height: 60px; /* Hauteur fixe pour les lignes de la table */
-}
-
-
-/* Gestion de la surbrillance */
-.highlight td, .highlight td:first-child {
-    background-color: #9BA8AB !important; /* Couleur de surbrillance */
-    font-weight: bold !important; /* Mettre le texte en gras */
-    color: #06141B !important;
-}
-
-.highlight td:first-child a,
-.highlight td:first-child i {
-    background-color: transparent !important; /* Transparent pour les icônes */
+    height: 66px !important; /* Hauteur fixe pour les lignes de la table */
 }
 
 /* Ajout de box-shadow aux tables */
@@ -133,29 +120,71 @@
 }
 
 /* Styles spécifiques pour l'étiquette "Closed" */
-.status-label.closed {
+.status-label.cloturee {
     background-color: #c8e6c9; /* Couleur de fond pour l'étiquette "Closed" */
     color: #388e3c; /* Couleur du texte pour l'étiquette "Closed" */
 }
 
 /* Styles spécifiques pour l'étiquette "Uncomplete" */
-.status-label.uncomplete {
+.status-label.incomplete {
     background-color: #ffcdd2; /* Couleur de fond pour l'étiquette "Uncomplete" */
     color: #d32f2f; /* Couleur du texte pour l'étiquette "Uncomplete" */
 }
 
 /* Styles spécifiques pour l'étiquette "Saved" */
-.status-label.saved {
+.status-label.enregistree {
     background-color: #bbdefb; /* Couleur de fond pour l'étiquette "Saved" */
     color: #1976d2; /* Couleur du texte pour l'étiquette "Saved" */
 }
 
 /* Styles spécifiques pour l'étiquette "In Transit" */
-.status-label.intransit {
+.status-label.entransit {
     background-color: #fff9c4; /* Couleur de fond pour l'étiquette "In Transit" */
     color: #fbc02d; /* Couleur du texte pour l'étiquette "In Transit" */
 }
 
+.parution-column {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 12px;
+    background-color: #e0f7fa; /* Couleur de fond par défaut */
+    color: #00796b; /* Couleur du texte par défaut */
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+}
+
+.parution-column.abandonnee {
+    color: rgb(255, 0, 0);
+    background-color: #ff000028;
+}
+
+.parution-column.encours {
+    color: rgb(0, 255, 76);
+    background-color: #2bff0028;
+}
+
+.parution-column.terminee {
+    color: rgb(25, 0, 255);
+    background-color: #1100ff28;
+}
+
+.parution-column.enpause {
+    color: rgb(255, 123, 0);
+    background-color: #ff990028;
+}
+
+/* Gestion de la surbrillance */
+.highlight td, .highlight td:first-child {
+    background-color: #9BA8AB !important; /* Couleur de surbrillance */
+    font-weight: bold !important; /* Mettre le texte en gras */
+    color: #06141B !important;
+}
+
+.highlight td:first-child a,
+.highlight td:first-child i {
+    background-color: transparent !important; /* Transparent pour les icônes */
+}
 
 /* ------------------------------------------------------------------------------------------------ */
 /* Styles pour le bouton de menu déroulant */
@@ -340,8 +369,7 @@ SWEET ALERT STYLES
 .viewTitle {
     color: #06141B;
     text-align: left;
-    border-bottom: 1px solid #000000;
-    height: 180px;
+    height: 100px;
 }
 
 .popupHeight {
@@ -353,13 +381,19 @@ SWEET ALERT STYLES
 
 .popupHTML {
     text-align: left !important;
+
+}
+
+.custom-swal-container {
+    padding-top: 10px; /* Adjust this value to move the title and content upwards */
+    height: auto;
 }
 
 .columns-container {
     display: flex;
     justify-content: space-between;
     /* padding-bottom: 50px; */
-    margin-top: -20px !important;
+    margin-top: -10px !important;
 }
 .column {
     flex: 1;
@@ -387,7 +421,7 @@ SWEET ALERT STYLES
 }
 
 .vertical-divider {
-    width: 1px;
+    width: 2px;
     background-color: #ccc;
     margin: 0 10px;
 }
@@ -419,18 +453,29 @@ SWEET ALERT STYLES
     gap: 10px;
 }
 
+.flags-table-column {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 50px;
+}
+
 .columns-container {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
 }
 
-.title-container {
-    display: flex;
-    flex-direction: column;
-    /* justify-content: space-between; */
-    align-items: flex-start;
 
+
+.title-container {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: -50px; */
+    margin-top: -100px;
+    /* padding-top: 10px; */
 }
 
 .title-text {
@@ -438,70 +483,34 @@ SWEET ALERT STYLES
     font-size: 1.2rem; /* Taille de la police pour "Série :" */
 }
 
-
-
-
-.title-text.abandonnee {
-    color: #d33; /* Couleur rouge */
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 12px;
-    background-color: #ff000028; /* Couleur de fond par défaut */
-    /* color: #00796b; Couleur du texte par défaut */
-    font-weight: bold;
-    font-size: 12px;
-    text-align: center;
-
-
-
-
+.grid-origine {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px; /* Adjust this value as needed */
 }
-.title-text.terminee {
-    color: #00ca2f; /* Couleur verte */
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 12px;
-    background-color: #00ff0d28; /* Couleur de fond par défaut */
-    /* color: #00796b; Couleur du texte par défaut */
-    font-weight: bold;
-    font-size: 12px;
-    text-align: center;
-}
-.title-text.encours {
-    color: #0077ff; /* Couleur bleue */
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 12px;
-    background-color: #ff000028; /* Couleur de fond par défaut */
-    /* color: #00796b; Couleur du texte par défaut */
-    font-weight: bold;
-    font-size: 12px;
-    text-align: center;
-}
-.title-text.enpause {
-    color: #ff7b00; /* Couleur bleue */
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 12px;
-    background-color: #ff000028; /* Couleur de fond par défaut */
-    /* color: #00796b; Couleur du texte par défaut */
-    font-weight: bold;
-    font-size: 12px;
-    text-align: center;
+.grid-item {
+    padding: 5px; /* Optional: add some padding to each item */
 }
 
-.serie-name {
-    font-size: 1.5rem; /* Taille de la police pour le nom de la série */
-    color: #4A5C6A; /* Couleur pour le nom de la série */
-    margin-top: -10px; /* Réduire l'espace entre le titre et le nom de la série */
-    
-}
-.top-right-icon {
-    position: absolute;
-    top: 10px;
-    right: 50px;
-}
+
+
+
 .serie-name {
     font-size: 1.8rem; /* Taille de la police pour le nom de la série */
     color: #4A5C6A; /* Couleur pour le nom de la série */
+    margin-top: -10px; /* Réduire l'espace entre le titre et le nom de la série */
+     border-bottom: 1px solid #4A5C6A;
+     padding-left: 5px;
+     padding-right: 50px;
+}
+
+.view-button {
+    background-color: #000000; /* Green background */
+        color: white; /* White text */
+        border: none; /* Remove border */
+        padding: 10px 20px; /* Add some padding */
+        font-size: 16px; /* Increase font size */
+        border-radius: 10px; /* Add rounded corners */
+        cursor: pointer; /* Add pointer cursor on hover */
+        width: 100px;
 }

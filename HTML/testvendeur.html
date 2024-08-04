@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Dropdowns in SweetAlert2</title>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.5/dist/sweetalert2.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.5/dist/sweetalert2.min.js"></script>
+    <style>
+        .swal2-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .swal2-columns {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .swal2-column {
+            display: flex;
+            flex-direction: column;
+            margin: 0 10px;
+            width: 23%;
+        }
+        .swal2-column .form-group {
+            margin-bottom: 15px;
+        }
+        .swal2-column .form-group label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .swal2-column .form-group input,
+        .swal2-column .form-group select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .toggle-button {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .toggle-button input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #4caf50;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        .slider:after {
+            content: 'enregistrée';
+            color: white;
+            display: block;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 70%;
+            font-size: 10px;
+        }
+        input:checked + .slider:after {
+            content: 'en transit';
+            left: 30%;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Fonction pour récupérer les données du serveur
+        async function fetchData() {
+            const customersResponse = await fetch('http://localhost:3003/api/customers');
+            const sellersResponse = await fetch('http://localhost:3003/api/sellers');
+            
+            const customers = await customersResponse.json();
+            const sellers = await sellersResponse.json();
+
+            return { customers, sellers };
+        }
+
+        // Fonction pour initialiser les dropdowns
+        async function initializeDropdowns() {
+            const { customers, sellers } = await fetchData();
+
+            // Obtenir des noms de vendeurs uniques
+            const uniqueSellers = [...new Set(sellers.map(item => item.seller_name))];
+            // Obtenir des noms de clients uniques
+            const uniqueCustomers = [...new Set(customers.map(item => item.customer_name))];
+
+            // Populer le dropdown des clients
+            const customerDropdown = document.getElementById('customerDropdown');
+            uniqueCustomers.forEach(customer => {
+                const option = document.createElement('option');
+                option.value = customer;
+                option.textContent = customer;
+                customerDropdown.appendChild(option);
+            });
+
+            // Populer le dropdown des vendeurs
+            const sellerDropdown = document.getElementById('sellerDropdown');
+            uniqueSellers.forEach(seller => {
+                const option = document.createElement('option');
+                option.value = seller;
+                option.textContent = seller;
+                sellerDropdown.appendChild(option);
+            });
+
+            // Stocker les données pour l'utiliser dans la fonction updateCities
+            window.sellerData = sellers;
+        }
+
+        // Fonction pour mettre à jour les villes basées sur le vendeur sélectionné
+        function updateCities() {
+            const selectedSeller = document.getElementById('sellerDropdown').value;
+            const data = window.sellerData.filter(item => item.seller_name === selectedSeller);
+            const uniqueCities = [...new Set(data.map(item => item.seller_city))];
+
+            const cityDropdown = document.getElementById('cityDropdown');
+            cityDropdown.innerHTML = '<option value="">Select City</option>';
+            uniqueCities.forEach(city => {
+                const option = document.createElement('option');
+                option.value = city;
+                option.textContent = city;
+                cityDropdown.appendChild(option);
+            });
+        }
+
+        // Fonction pour mettre à jour la date de facture en fonction du client sélectionné
+        function updateInvoiceDate() {
+            const customer = document.getElementById('customerDropdown').value;
+            const purchaseDate = document.getElementById('purchaseDate').value;
+            const receptionDate = document.getElementById('receptionDate').value;
+            const invoiceDate = document.getElementById('invoiceDate');
+
+            if (customer === 'Ethan MASNEUF') {
+                invoiceDate.value = purchaseDate;
+            } else {
+                invoiceDate.value = receptionDate;
+            }
+
+            updateInvoiceNumberAndMonthlyPayment();
+        }
+
+        // Fonction pour mettre à jour le numéro de facture et la mensualité en fonction de la date de facture
+        function updateInvoiceNumberAndMonthlyPayment() {
+            const invoiceDate = document.getElementById('invoiceDate').value;
+            const invoiceNumber = document.getElementById('invoiceNumber');
+            const monthlyPayment = document.getElementById('monthlyPayment');
+
+            if (invoiceDate) {
+                const date = new Date(invoiceDate);
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const monthNames = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+                
+                invoiceNumber.value = `F${year}${month}`;
+                monthlyPayment.value = `${monthNames[date.getMonth()]} ${year}`;
+            } else {
+                invoiceNumber.value = 'F';
+                monthlyPayment.value = '';
+            }
+        }
+
+        // Fonction pour gérer le changement d'état du toggle
+        function toggleInvoiceStatus() {
+            const toggle = document.getElementById('statusToggle');
+            const invoiceStatus = document.getElementById('invoiceStatus');
+            const fieldsToToggle = ['purchaseDate', 'receptionDate', 'sellerDropdown', 'cityDropdown'];
+
+            if (toggle.checked) {
+                invoiceStatus.value = 'en transit';
+                fieldsToToggle.forEach(field => document.getElementById(field).removeAttribute('required'));
+            } else {
+                invoiceStatus.value = 'enregistrée';
+                fieldsToToggle.forEach(field => document.getElementById(field).setAttribute('required', 'required'));
+            }
+        }
+
+        // Initialiser les dropdowns dans la popup au chargement de la page
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                title: 'Ajouter une nouvelle facture',
+                width: '1000px',  // Augmenter la largeur de la fenêtre modale
+                html: `
+                    <div class="swal2-columns">
+                        <div class="swal2-column">
+                            <div class="form-group">
+                                <label for="invoiceNumber">N° Facture <span class="required-field">*</span>:</label>
+                                <input type="text" id="invoiceNumber" name="invoiceNumber" class="swal2-input" value="F" readonly required>
+                            </div>
+                            <div class="form-group">
+                                <label for="invoiceDate">Date Facture <span class="required-field">*</span>:</label>
+                                <input type="date" id="invoiceDate" name="invoiceDate" class="swal2-input" readonly required>
+                            </div>
+                            <div class="form-group">
+                                <label for="monthlyPayment">Mensualité <span class="required-field">*</span>:</label>
+                                <input type="text" id="monthlyPayment" name="monthlyPayment" class="swal2-input" readonly required>
+                            </div>
+                        </div>
+                        <div class="swal2-column">
+                            <div class="form-group">
+                                <label for="purchaseDate">Date achat <span class="required-field">*</span>:</label>
+                                <input type="date" id="purchaseDate" name="purchaseDate" class="swal2-input" required onchange="updateInvoiceDate()">
+                            </div>
+                            <div class="form-group">
+                                <label for="receptionDate">Date réception <span class="required-field">*</span>:</label>
+                                <input type="date" id="receptionDate" name="receptionDate" class="swal2-input" required onchange="updateInvoiceDate()">
+                            </div>
+                        </div>
+                        <div class="swal2-column">
+                            <div class="form-group">
+                                <label for="customerDropdown">Select Customer <span class="required-field">*</span>:</label>
+                                <select id="customerDropdown" class="swal2-input" required onchange="updateInvoiceDate()">
+                                    <option value="">Select Customer</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="sellerDropdown">Select Seller <span class="required-field">*</span>:</label>
+                                <select id="sellerDropdown" class="swal2-input" required onchange="updateCities()">
+                                    <option value="">Select Seller</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="cityDropdown">Select City <span class="required-field">*</span>:</label>
+                                <select id="cityDropdown" class="swal2-input" required>
+                                    <option value="">Select City</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="swal2-column">
+                            <div class="form-group">
+                                <label for="invoiceStatus">Statut facture :</label>
+                                <input type="text" id="invoiceStatus" name="invoiceStatus" class="swal2-input" value="enregistrée" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Changer le statut :</label>
+                                <label class="toggle-button">
+                                    <input type="checkbox" id="statusToggle" onchange="toggleInvoiceStatus()">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                `,
+                didOpen: () => {
+                    initializeDropdowns();
+                },
+                preConfirm: () => {
+                    const invoiceNumber = document.getElementById('invoiceNumber').value;
+                    const invoiceDate = document.getElementById('invoiceDate').value;
+                    const monthlyPayment = document.getElementById('monthlyPayment').value;
+                    const purchaseDate = document.getElementById('purchaseDate').value;
+                    const receptionDate = document.getElementById('receptionDate').value;
+                    const customer = document.getElementById('customerDropdown').value;
+                    const seller = document.getElementById('sellerDropdown').value;
+                    const city = document.getElementById('cityDropdown').value;
+                    const invoiceStatus = document.getElementById('invoiceStatus').value;
+
+                    if (!document.getElementById('statusToggle').checked) {
+                        if (!invoiceNumber || !invoiceDate || !monthlyPayment || !purchaseDate || !receptionDate || !customer || !seller || !city) {
+                            Swal.showValidationMessage(`Veuillez remplir tous les champs obligatoires`);
+                        }
+                    }
+
+                    return { invoiceNumber, invoiceDate, monthlyPayment, purchaseDate, receptionDate, customer, seller, city, invoiceStatus };
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const { invoiceNumber, invoiceDate, monthlyPayment, purchaseDate, receptionDate, customer, seller, city, invoiceStatus } = result.value;
+                    console.log('N° Facture:', invoiceNumber);
+                    console.log('Date Facture:', invoiceDate);
+                    console.log('Mensualité:', monthlyPayment);
+                    console.log('Date achat:', purchaseDate);
+                    console.log('Date réception:', receptionDate);
+                    console.log('Customer:', customer);
+                    console.log('Seller:', seller);
+                    console.log('City:', city);
+                    console.log('Statut facture:', invoiceStatus);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

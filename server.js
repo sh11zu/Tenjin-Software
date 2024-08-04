@@ -11,8 +11,8 @@ app.use(express.json());
 // Configurer la connexion à la base de données
 const db = mysql.createConnection({
   host: 'localhost',
-  user: 'prm_root',
-  password: 'Formation13@',
+  user: 'root',
+  password: '',
   database: 'tenjin_bdd'
 });
 
@@ -112,6 +112,28 @@ db.connect(err => {
       res.send(results);
     });
   });
+
+// Route pour obtenir des données de la table customers
+app.get('/api/customers', (req, res) => {
+  let sql = 'SELECT customer_name FROM customers';
+  db.query(sql, (err, results) => {
+    if (err) throw err;
+    res.send(results);
+  });
+});
+
+// Route pour obtenir les données des vendeurs
+app.get('/api/sellers', (req, res) => {
+  const query = 'SELECT seller_name, seller_city FROM your_table_name';
+  connection.query(query, (err, results) => {
+    if (err) {
+      console.error('Erreur lors de l\'exécution de la requête :', err);
+      res.status(500).send('Erreur du serveur');
+      return;
+    }
+    res.json(results);
+  });
+});
   
   app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);

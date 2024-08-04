@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Dropdowns in SweetAlert2</title>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.5/dist/sweetalert2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/STATIC/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <style>
+        .swal2-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swal2-popup {
+            width: 1000px !important;
+            height: 800px !important;
+        }
+
+        .tabs {
+            display: flex;
+            cursor: pointer;
+            padding: 0px 0px;
+            margin-top: 20px; /* Adjusted margin for proper alignment */
+        }
+
+        .tab {
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            border-bottom: none;
+            background: #f1f1f1;
+            margin-right: 5px;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .tab.active {
+            background: #fff;
+            font-weight: bold;
+        }
+
+        .swal2-title {
+            font-size: 1.5em; /* Adjust font size if needed */
+            margin: 10px 0; /* Reduce margin to decrease height */
+            padding: 0; /* Remove padding */
+        }
+
+        .tab-content-container {
+            height: calc(100% - 160px); /* Adjust height to fit content within the modal */
+            overflow-y: auto;
+        }
+
+        .tab-content {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 0 5px 5px 5px;
+            background: #fff;
+            display: none;
+            margin-top: 0;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .form-group-invisible {
+            display: none;
+        }
+
+        .form-group label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            text-align: left;
+            display: block;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            appearance: none;
+            text-align: left;
+        }
+
+        .toggle-button {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .toggle-button input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: #4caf50;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(26px);
+        }
+
+        .slider:after {
+            content: 'enregistrée';
+            color: white;
+            display: block;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 70%;
+            font-size: 10px;
+        }
+
+        input:checked+.slider:after {
+            content: 'en transit';
+            left: 30%;
+        }
+
+        .custom-textbox {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            font-family: inherit;
+            text-align: left;
+        }
+
+        .label-name {
+            text-align: left;
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .button-group.right {
+            justify-content: flex-end;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            width: 45%;
+            margin-right: 5%;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        async function fetchData() {
+            const customersResponse = await fetch('http://localhost:3003/api/customers');
+            const sellersResponse = await fetch('http://localhost:3003/api/sellers');
+
+            const customers = await customersResponse.json();
+            const sellers = await sellersResponse.json();
+
+            return { customers, sellers };
+        }
+
+        async function initializeDropdowns() {
+            const { customers, sellers } = await fetchData();
+            const uniqueSellers = [...new Set(sellers.map(item => item.seller_name))];
+            const uniqueCustomers = [...new Set(customers.map(item => item.customer_name))];
+
+            const customerDropdown = document.getElementById('customerDropdown');
+            uniqueCustomers.forEach(customer => {
+                const option = document.createElement('option');
+                option.value = customer;
+                option.textContent = customer;
+                customerDropdown.appendChild(option);
+            });
+
+            const sellerDropdown = document.getElementById('sellerDropdown');
+            uniqueSellers.forEach(seller => {
+                const option = document.createElement('option');
+                option.value = seller;
+                option.textContent = seller;
+                sellerDropdown.appendChild(option);
+            });
+
+            window.sellerData = sellers;
+        }
+
+        function updateCities() {
+            const selectedSeller = document.getElementById('sellerDropdown').value;
+            const data = window.sellerData.filter(item => item.seller_name === selectedSeller);
+            const uniqueCities = [...new Set(data.map(item => item.seller_city))];
+
+            const cityDropdown = document.getElementById('cityDropdown');
+            cityDropdown.innerHTML = '<option value="">Select City</option>';
+            uniqueCities.forEach(city => {
+                const option = document.createElement('option');
+                option.value = city;
+                option.textContent = city;
+                cityDropdown.appendChild(option);
+            });
+        }
+
+        function updateInvoiceDate() {
+            const customer = document.getElementById('customerDropdown').value;
+            const purchaseDate = document.getElementById('purchaseDate').value;
+            const receptionDate = document.getElementById('receptionDate').value;
+            const invoiceDate = document.getElementById('invoiceDate');
+
+            if (customer === 'Ethan MASNEUF') {
+                invoiceDate.value = purchaseDate;
+            } else {
+                invoiceDate.value = receptionDate;
+            }
+
+            updateInvoiceNumberAndMonthlyPayment();
+        }
+
+        function updateInvoiceNumberAndMonthlyPayment() {
+            const invoiceDate = document.getElementById('invoiceDate').value;
+            const invoiceNumber = document.getElementById('invoiceNumber');
+            const monthlyPayment = document.getElementById('monthlyPayment');
+
+            if (invoiceDate) {
+                const date = new Date(invoiceDate);
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const monthNames = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+
+                invoiceNumber.value = `F${year}${month}`;
+                monthlyPayment.value = `${monthNames[date.getMonth()]} ${year}`;
+            } else {
+                invoiceNumber.value = 'F';
+                monthlyPayment.value = '';
+            }
+        }
+
+        function toggleInvoiceStatus() {
+            const toggle = document.getElementById('statusToggle');
+            const invoiceStatus = document.getElementById('invoiceStatus');
+            const fieldsToToggle = ['purchaseDate', 'receptionDate', 'sellerDropdown', 'cityDropdown'];
+
+            if (toggle.checked) {
+                invoiceStatus.value = 'en transit';
+                fieldsToToggle.forEach(field => document.getElementById(field).removeAttribute('required'));
+            } else {
+                invoiceStatus.value = 'enregistrée';
+                fieldsToToggle.forEach(field => document.getElementById(field).setAttribute('required', 'required'));
+            }
+        }
+
+        function showTabContent(tabIndex) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach((content, index) => {
+                if (index === tabIndex) {
+                    content.classList.add('active');
+                } else {
+                    content.classList.remove('active');
+                }
+            });
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach((tab, index) => {
+                if (index === tabIndex) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+
+            // Handle button visibility and text
+            const prevButton = document.getElementById('prevButton');
+            const nextButton = document.getElementById('nextButton');
+
+            if (tabIndex === 0) {
+                prevButton.style.display = 'none';
+                nextButton.style.marginLeft = 'auto'; /* Align next button to the right on the first tab */
+            } else {
+                prevButton.style.display = 'inline-block';
+                nextButton.style.marginLeft = '0'; /* Reset margin for next button on other tabs */
+            }
+
+            if (tabIndex === 2) {
+                nextButton.textContent = 'Terminer';
+                nextButton.onclick = () => Swal.close();
+            } else {
+                nextButton.textContent = 'Suivant';
+                nextButton.onclick = showNextTab;
+            }
+        }
+
+        function showNextTab() {
+            const currentTabIndex = Array.from(document.querySelectorAll('.tab')).findIndex(tab => tab.classList.contains('active'));
+            if (currentTabIndex < 2) {
+                showTabContent(currentTabIndex + 1);
+            }
+        }
+
+        function showPreviousTab() {
+            const currentTabIndex = Array.from(document.querySelectorAll('.tab')).findIndex(tab => tab.classList.contains('active'));
+            if (currentTabIndex > 0) {
+                showTabContent(currentTabIndex - 1);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                title: 'Ajouter une nouvelle facture',
+                width: '1000px',
+                heightAuto: false,
+                showConfirmButton: false,
+                html: `
+                <div class="tabs">
+                    <div class="tab active" onclick="showTabContent(0)">Dates</div>
+                    <div class="tab" onclick="showTabContent(1)">Acheteur et Vendeur</div>
+                    <div class="tab" onclick="showTabContent(2)">Récapitulatif</div>
+                </div>
+                <div class="tab-content-container">
+                    <div class="tab-content active" id="tab-1">
+                        <div class="form-group">
+                            <label for="purchaseDate" class="label-name">Date achat <span class="required-field">*</span>:</label>
+                            <input type="date" id="purchaseDate" name="purchaseDate" required onchange="updateInvoiceDate()">
+                        </div>
+                        <div class="form-group">
+                            <label for="receptionDate" class="label-name">Date réception <span class="required-field">*</span>:</label>
+                            <input type="date" id="receptionDate" name="receptionDate" required onchange="updateInvoiceDate()">
+                        </div>
+                    </div>
+                    <div class="tab-content" id="tab-2">
+                        <div class="form-group">
+                            <label for="customerDropdown" class="label-name">Acheteur <span class="required-field">*</span>:</label>
+                            <select id="customerDropdown" required onchange="updateInvoiceDate()">
+                                <option value="" disabled selected>Choisir un acheteur...</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="sellerDropdown" class="label-name">Vendeur <span class="required-field">*</span>:</label>
+                            <select id="sellerDropdown" required onchange="updateCities()">
+                                <option value="" disabled selected>Choisir un vendeur...</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="cityDropdown" class="label-name">Ville/Pays <span class="required-field">*</span>:</label>
+                            <select id="cityDropdown" required>
+                                <option value="" disabled selected>Choisir une ville/pays...</option>
+                            </select>
+                        </div>
+                        <div class="form-group-invisible">
+                            <label for="invoiceStatus" class="label-name">Statut facture :</label>
+                            <input type="text" id="invoiceStatus" name="invoiceStatus" value="enregistrée" readonly>
+                        </div>
+                        <div class="form-group" style="flex: 1; display: flex; align-items: center; justify-content: flex-end;">
+                            <label>Changer le statut :</label>
+                            <label class="toggle-button">
+                                <input type="checkbox" id="statusToggle" onchange="toggleInvoiceStatus()">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="tab-3">
+                        <div class="row">
+                            <div class="column">
+                                <div class="form-group">
+                                    <label for="invoiceNumber" class="label-name">N° Facture <span class="required-field">*</span>:</label>
+                                    <input type="text" id="invoiceNumber" name="invoiceNumber" value="F" readonly required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="invoiceDate" class="label-name">Date Facture <span class="required-field">*</span>:</label>
+                                    <input type="date" id="invoiceDate" name="invoiceDate" readonly required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="monthlyPayment" class="label-name">Mensualité <span class="required-field">*</span>:</label>
+                                    <input type="text" id="monthlyPayment" name="monthlyPayment" readonly required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Acheteur :</label>
+                                    <input type="text" id="recapCustomer" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Vendeur :</label>
+                                    <input type="text" id="recapSeller" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Ville/Pays :</label>
+                                    <input type="text" id="recapCity" readonly>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="form-group">
+                                    <label>Statut facture :</label>
+                                    <input type="text" id="recapInvoiceStatus" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Date achat :</label>
+                                    <input type="date" id="recapPurchaseDate" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Date réception :</label>
+                                    <input type="date" id="recapReceptionDate" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="button-group right">
+                    <button type="button" class="swal2-cancel swal2-styled" id="prevButton" onclick="showPreviousTab()">Précédent</button>
+                    <button type="button" class="swal2-confirm swal2-styled" id="nextButton" onclick="showNextTab()">Suivant</button>
+                </div>
+                `,
+                didOpen: () => {
+                    initializeDropdowns();
+                    document.querySelectorAll('.tab').forEach((tab, index) => {
+                        tab.addEventListener('click', () => {
+                            showTabContent(index);
+                        });
+                    });
+                    showTabContent(0); // Ensure the first tab is correctly displayed
+                },
+                preConfirm: () => {
+                    const invoiceNumber = document.getElementById('invoiceNumber').value;
+                    const invoiceDate = document.getElementById('invoiceDate').value;
+                    const monthlyPayment = document.getElementById('monthlyPayment').value;
+                    const purchaseDate = document.getElementById('purchaseDate').value;
+                    const receptionDate = document.getElementById('receptionDate').value;
+                    const customer = document.getElementById('customerDropdown').value;
+                    const seller = document.getElementById('sellerDropdown').value;
+                    const city = document.getElementById('cityDropdown').value;
+                    const invoiceStatus = document.getElementById('invoiceStatus').value;
+
+                    if (!document.getElementById('statusToggle').checked) {
+                        if (!invoiceNumber || !invoiceDate || !monthlyPayment || !purchaseDate || !receptionDate || !customer || !seller || !city) {
+                            Swal.showValidationMessage(`Veuillez remplir tous les champs obligatoires`);
+                        }
+                    }
+
+                    document.getElementById('recapPurchaseDate').value = purchaseDate;
+                    document.getElementById('recapReceptionDate').value = receptionDate;
+                    document.getElementById('recapCustomer').value = customer;
+                    document.getElementById('recapSeller').value = seller;
+                    document.getElementById('recapCity').value = city;
+                    document.getElementById('recapInvoiceStatus').value = invoiceStatus;
+
+                    return { invoiceNumber, invoiceDate, monthlyPayment, purchaseDate, receptionDate, customer, seller, city, invoiceStatus };
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const { invoiceNumber, invoiceDate, monthlyPayment, purchaseDate, receptionDate, customer, seller, city, invoiceStatus } = result.value;
+                    console.log('N° Facture:', invoiceNumber);
+                    console.log('Date Facture:', invoiceDate);
+                    console.log('Mensualité:', monthlyPayment);
+                    console.log('Date achat:', purchaseDate);
+                    console.log('Date réception:', receptionDate);
+                    console.log('Customer:', customer);
+                    console.log('Seller:', seller);
+                    console.log('City:', city);
+                    console.log('Statut facture:', invoiceStatus);
+
+                    document.getElementById('recapInvoiceStatus').value = invoiceStatus; // Ensure the recap status is correctly populated
+                }
+            });
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</body>
+
+</html>

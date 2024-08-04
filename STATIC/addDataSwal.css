@@ -1,0 +1,131 @@
+.swal2-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.swal2-columns {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.swal2-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 15px;
+    position: relative;
+}
+.swal2-row .form-group {
+    margin-bottom: 15px;
+    flex: display;
+}
+.swal2-column {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+    position: relative;
+}
+.swal2-column .form-group {
+    margin-bottom: 15px;
+}
+.swal2-column .form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-align: left;
+    display: block; /* Ensure labels take up full width */
+}
+.swal2-column .form-group input,
+.swal2-column .form-group select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    appearance: none;
+    text-align: left;
+}
+.divider-horizontal {
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+    margin: 10px 0;
+}
+.divider-vertical {
+    height: 100%;
+    width: 1px;
+    background-color: #ccc;
+    position: absolute;
+    right: 50%;
+    top: 0;
+    transform: translateX(50%);
+}
+.toggle-button {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+.toggle-button input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+input:checked + .slider {
+    background-color: #4caf50;
+}
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+.slider:after {
+    content: 'enregistrée';
+    color: white;
+    display: block;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 70%;
+    font-size: 10px;
+}
+input:checked + .slider:after {
+    content: 'en transit';
+    left: 30%;
+}
+.custom-textbox {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    font-family: inherit;
+    text-align: left;
+}
+.label-name {
+    text-align: left;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}

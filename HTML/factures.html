@@ -7,9 +7,12 @@
     <link rel="stylesheet" href="/STATIC/styles.css">
     <link rel="stylesheet" href="/STATIC/sidebar.css">
     <link rel="stylesheet" href="/STATIC/tables.css">
+    <link rel="stylesheet" href="/STATIC/addDataSwal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body>
     <div class="sidebar" id="sidebar">
@@ -160,321 +163,24 @@
                         <th>Statut</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr data-numero="F20211101" data-datefacture="01/11/2021" data-mensualite="1" data-dateachat="01/11/2021" data-datereception="01/12/2021" data-acheteur="ETHAN" data-vendeur="Amazon" data-ville="France" data-prixtotal="100.00 €" data-statut="Payé">
-                        <td>
-                            <div class="table-dropdown">
-                                <button class="dropbtn"><span></span></button>
-                                <div class="table-dropdown-content">
-                                    <a href="#" class="view-facture"><i class="fas fa-search"></i> View</a>
-                                    <a href="#" class="edit-facture"><i class="fas fa-edit"></i> Edit</a>
-                                    <a href="#" class="delete-facture"><i class="fas fa-trash"></i> Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                        
-                        <td>F20211101</td>
-                        <td>01/11/2021</td>
-                        <td>Mensualité 1</td>
-                        <td>01/11/2021</td>
-                        <td>01/12/2021</td>
-                        <td>ETHAN</td>
-                        <td>Amazon</td>
-                        <td>France</td>
-                        <td>100.00 €</td>
-                        <td><span class="status-label closed">Clôturée</span></td>
-                    </tr>
-                    <tr data-numero="F20211015" data-datefacture="15/10/2021" data-mensualite="2" data-dateachat="15/10/2021" data-datereception="15/11/2021" data-acheteur="LUCAS" data-vendeur="Fnac" data-ville="France" data-prixtotal="75.00 €" data-statut="Payé">
-                        <td>
-                            <div class="table-dropdown">
-                                <button class="dropbtn"><span></span></button>
-                                <div class="table-dropdown-content">
-                                    <a href="#" class="view-facture"><i class="fas fa-search"></i> View</a>
-                                    <a href="#" class="edit-facture"><i class="fas fa-edit"></i> Edit</a>
-                                    <a href="#" class="delete-facture"><i class="fas fa-trash"></i> Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                        <td>F20211015</td>
-                        <td>15/10/2021</td>
-                        <td>Mensualité 2</td>
-                        <td>15/10/2021</td>
-                        <td>15/11/2021</td>
-                        <td>LUCAS</td>
-                        <td>Fnac</td>
-                        <td>France</td>
-                        <td>75.00 €</td>
-                        <td><span class="status-label uncomplete">Incomplète</span></td>
-                    </tr>
-                    <tr data-numero="F20210930" data-datefacture="30/09/2021" data-mensualite="3" data-dateachat="30/09/2021" data-datereception="30/10/2021" data-acheteur="OLIVIA" data-vendeur="Leclerc" data-ville="France" data-prixtotal="80.00 €" data-statut="Payé">
-                        <td>
-                            <div class="table-dropdown">
-                                <button class="dropbtn"><span></span></button>
-                                <div class="table-dropdown-content">
-                                    <a href="#" class="view-facture"><i class="fas fa-search"></i> View</a>
-                                    <a href="#" class="edit-facture"><i class="fas fa-edit"></i> Edit</a>
-                                    <a href="#" class="delete-facture"><i class="fas fa-trash"></i> Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                        <td>F20210930</td>
-                        <td>30/09/2021</td>
-                        <td>Mensualité 3</td>
-                        <td>30/09/2021</td>
-                        <td>30/10/2021</td>
-                        <td>OLIVIA</td>
-                        <td>Leclerc</td>
-                        <td>France</td>
-                        <td>80.00 €</td>
-                        <td><span class="status-label saved">Sauvegardée</span></td>
-                    </tr>
-                    <tr data-numero="F20210825" data-datefacture="25/08/2021" data-mensualite="4" data-dateachat="25/08/2021" data-datereception="25/09/2021" data-acheteur="EMMA" data-vendeur="Intermarché" data-ville="France" data-prixtotal="90.00 €" data-statut="Payé">
-                        <td>
-                            <div class="table-dropdown">
-                                <button class="dropbtn"><span></span></button>
-                                <div class="table-dropdown-content">
-                                    <a href="#" class="view-facture"><i class="fas fa-search"></i> View</a>
-                                    <a href="#" class="edit-facture"><i class="fas fa-edit"></i> Edit</a>
-                                    <a href="#" class="delete-facture"><i class="fas fa-trash"></i> Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                        <td>F20210825</td>
-                        <td>25/08/2021</td>
-                        <td>Mensualité 4</td>
-                        <td>25/08/2021</td>
-                        <td>25/09/2021</td>
-                        <td>EMMA</td>
-                        <td>Intermarché</td>
-                        <td>France</td>
-                        <td>90.00 €</td>
-                        <td><span class="status-label intransit">En transit</span></td>
-                    </tr>
-                    <tr data-numero="F20210720" data-datefacture="20/07/2021" data-mensualite="5" data-dateachat="20/07/2021" data-datereception="20/08/2021" data-acheteur="NOAH" data-vendeur="Carrefour" data-ville="France" data-prixtotal="110.00 €" data-statut="Payé">
-                        <td>
-                            <div class="table-dropdown">
-                                <button class="dropbtn"><span></span></button>
-                                <div class="table-dropdown-content">
-                                    <a href="#" class="view-facture"><i class="fas fa-search"></i> View</a>
-                                    <a href="#" class="edit-facture"><i class="fas fa-edit"></i> Edit</a>
-                                    <a href="#" class="delete-facture"><i class="fas fa-trash"></i> Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                        <td>F20210720</td>
-                        <td>20/07/2021</td>
-                        <td>Mensualité 5</td>
-                        <td>20/07/2021</td>
-                        <td>20/08/2021</td>
-                        <td>NOAH</td>
-                        <td>Carrefour</td>
-                        <td>France</td>
-                        <td>110.00 €</td>
-                        <td><span class="status-label paid">Payé</span></td>
-                    </tr>
-                    <tr data-numero="F20210615" data-datefacture="15/06/2021" data-mensualite="6" data-dateachat="15/06/2021" data-datereception="15/07/2021" data-acheteur="AVA" data-vendeur="Auchan" data-ville="France" data-prixtotal="70.00 €" data-statut="Payé">
-                        <td>
-                            <div class="table-dropdown">
-                                <button class="dropbtn"><span></span></button>
-                                <div class="table-dropdown-content">
-                                    <a href="#" class="view-facture"><i class="fas fa-search"></i> View</a>
-                                    <a href="#" class="edit-facture"><i class="fas fa-edit"></i> Edit</a>
-                                    <a href="#" class="delete-facture"><i class="fas fa-trash"></i> Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                        <td>F20210615</td>
-                        <td>15/06/2021</td>
-                        <td>Mensualité 6</td>
-                        <td>15/06/2021</td>
-                        <td>15/07/2021</td>
-                        <td>AVA</td>
-                        <td>Auchan</td>
-                        <td>France</td>
-                        <td>70.00 €</td>
-                        <td><span class="status-label paid">Payé</span></td>
-                    </tr>
-                    <tr data-numero="F20210510" data-datefacture="10/05/2021" data-mensualite="7" data-dateachat="10/05/2021" data-datereception="10/06/2021" data-acheteur="ISABELLA" data-vendeur="Gibert-Joseph" data-ville="France" data-prixtotal="95.00 €" data-statut="Payé">
-                        <td>
-                            <div class="table-dropdown">
-                                <button class="dropbtn"><span></span></button>
-                                <div class="table-dropdown-content">
-                                    <a href="#" class="view-facture"><i class="fas fa-search"></i> View</a>
-                                    <a href="#" class="edit-facture"><i class="fas fa-edit"></i> Edit</a>
-                                    <a href="#" class="delete-facture"><i class="fas fa-trash"></i> Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                        <td>F20210510</td>
-                        <td>10/05/2021</td>
-                        <td>Mensualité 7</td>
-                        <td>10/05/2021</td>
-                        <td>10/06/2021</td>
-                        <td>ISABELLA</td>
-                        <td>Gibert-Joseph</td>
-                        <td>France</td>
-                        <td>95.00 €</td>
-                        <td><span class="status-label paid">Payé</span></td>
-                    </tr>
-                    <tr data-numero="F20210405" data-datefacture="05/04/2021" data-mensualite="8" data-dateachat="05/04/2021" data-datereception="05/05/2021" data-acheteur="MASON" data-vendeur="Fnac" data-ville="France" data-prixtotal="85.00 €" data-statut="Payé">
-                        <td>
-                            <div class="table-dropdown">
-                                <button class="dropbtn"><span></span></button>
-                                <div class="table-dropdown-content">
-                                    <a href="#" class="view-facture"><i class="fas fa-search"></i> View</a>
-                                    <a href="#" class="edit-facture"><i class="fas fa-edit"></i> Edit</a>
-                                    <a href="#" class="delete-facture"><i class="fas fa-trash"></i> Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                        <td>F20210405</td>
-                        <td>05/04/2021</td>
-                        <td>Mensualité 8</td>
-                        <td>05/04/2021</td>
-                        <td>05/05/2021</td>
-                        <td>MASON</td>
-                        <td>Fnac</td>
-                        <td>France</td>
-                        <td>85.00 €</td>
-                        <td><span class="status-label paid">Payé</span></td>
-                    </tr>
-                    <tr data-numero="F20210301" data-datefacture="01/03/2021" data-mensualite="9" data-dateachat="01/03/2021" data-datereception="01/04/2021" data-acheteur="LOGAN" data-vendeur="Leclerc" data-ville="France" data-prixtotal="60.00 €" data-statut="Payé">
-                        <td>
-                            <div class="table-dropdown">
-                                <button class="dropbtn"><span></span></button>
-                                <div class="table-dropdown-content">
-                                    <a href="#" class="view-facture"><i class="fas fa-search"></i> View</a>
-                                    <a href="#" class="edit-facture"><i class="fas fa-edit"></i> Edit</a>
-                                    <a href="#" class="delete-facture"><i class="fas fa-trash"></i> Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                        <td>F20210301</td>
-                        <td>01/03/2021</td>
-                        <td>Mensualité 9</td>
-                        <td>01/03/2021</td>
-                        <td>01/04/2021</td>
-                        <td>LOGAN</td>
-                        <td>Leclerc</td>
-                        <td>France</td>
-                        <td>60.00 €</td>
-                        <td><span class="status-label paid">Payé</span></td>
-                    </tr>
-                    <tr data-numero="F20210215" data-datefacture="15/02/2021" data-mensualite="10" data-dateachat="15/02/2021" data-datereception="15/03/2021" data-acheteur="SOPHIA" data-vendeur="Auchan" data-ville="France" data-prixtotal="105.00 €" data-statut="Payé">
-                        <td>
-                            <div class="table-dropdown">
-                                <button class="dropbtn"><span></span></button>
-                                <div class="table-dropdown-content">
-                                    <a href="#" class="view-facture"><i class="fas fa-search"></i> View</a>
-                                    <a href="#" class="edit-facture"><i class="fas fa-edit"></i> Edit</a>
-                                    <a href="#" class="delete-facture"><i class="fas fa-trash"></i> Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                        <td>F20210215</td>
-                        <td>15/02/2021</td>
-                        <td>Mensualité 10</td>
-                        <td>15/02/2021</td>
-                        <td>15/03/2021</td>
-                        <td>SOPHIA</td>
-                        <td>Auchan</td>
-                        <td>France</td>
-                        <td>105.00 €</td>
-                        <td><span class="status-label paid">Payé</span></td>
-                    </tr>
+                <tbody id="factures-table-body">
+                    <!-- Les données des publishers seront insérées ici par JavaScript -->
                 </tbody>
             </table>
         </main>
     </div>
     <script src="/STATIC/script.js"></script>
     <script src="/STATIC/sidebar.js"></script>
-    <!-- <script src="/STATIC/TAB-DONNEES/tables.js"></script> -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="/STATIC/TAB-DONNEES/tables.js"></script>
+    <script src="/STATIC/queries/fetchData.js"></script>
+    <script src="/STATIC/queries/addData.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
-    <script>
-
-        document.addEventListener('DOMContentLoaded', function () {
-            $('#facturesTable').DataTable({
-                columnDefs: [
-                    { orderable: false, targets: 0 }
-                ],
-                language: {
-                    url: '//cdn.datatables.net/plug-ins/1.10.24/i18n/French.json'
-                }
-            });
-
-            $(document).on('click', '.delete-facture', function (e) {
-                e.preventDefault();
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Erreur',
-                    text: 'Vous n\'avez pas les autorisations pour supprimer une facture.',
-                });
-            });
-
-            $(document).on('click', '.edit-facture', function (e) {
-                e.preventDefault();
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Erreur',
-                    text: 'Vous n\'avez pas les autorisations pour modifier une facture.',
-                });
-            });
-
-            $(document).on('click', '.view-facture', function (e) {
-                e.preventDefault();
-                
-                // Récupérer les données de la ligne cliquée
-                const row = $(this).closest('tr');
-                const facture = row.data('facture');
-                const dateFacture = row.data('date-facture');
-                const mensualite = row.data('mensualite');
-                const dateAchat = row.data('date-achat');
-                const dateReception = row.data('date-reception');
-                const acheteur = row.data('acheteur');
-                const vendeur = row.data('vendeur');
-                const villePays = row.data('ville-pays');
-                const prixTotal = row.data('prix-total');
-                const statut = row.data('statut');
-                
-                Swal.fire({
-                    title: 'Détail de la facture',
-                    width: '800px',  // Définir la largeur de la popup
-                    heightAuto: false,  // Désactiver la hauteur automatique
-                    html: `
-                        <div style="display: flex; height: 600px;">
-                            <div style="flex: 1; text-align: left; padding-right: 20px; overflow-y: auto;">
-                                <p><strong>N° Facture:</strong> ${facture}</p>
-                                <p><strong>Date Facture:</strong> ${dateFacture}</p>
-                                <p><strong>Mensualité:</strong> ${mensualite}</p>
-                                <p><strong>Date d'achat:</strong> ${dateAchat}</p>
-                                <p><strong>Date de réception:</strong> ${dateReception}</p>
-                                <p><strong>Acheteur:</strong> ${acheteur}</p>
-                                <p><strong>Vendeur:</strong> ${vendeur}</p>
-                                <p><strong>Ville/Pays:</strong> ${villePays}</p>
-                                <p><strong>Prix total:</strong> ${prixTotal}</p>
-                                <p><strong>Statut:</strong> ${statut}</p>
-                            </div>
-                            <div style="flex: 1; text-align: left; border-left: 1px solid #ddd; padding-left: 20px; overflow-y: auto;">
-                                <p><strong>Livres achetés:</strong></p>
-                                <ul>
-                                    <li>Book 1</li>
-                                    <li>Book 2</li>
-                                    <li>Book 3</li>
-                                    <li>Book 4</li>
-                                </ul>
-                            </div>
-                        </div>
-                    `,
-                    icon: 'info',
-                });
-            });
-
-            
-
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+   
     <button class="floating-btn">+</button>
 </body>
 </html>
