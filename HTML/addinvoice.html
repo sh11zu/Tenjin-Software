@@ -239,6 +239,18 @@
             margin-top: 10px;
             text-align: right;
         }
+
+        .addDropdownValue {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .add-button {
+            width: 40px;
+            font-size: 22px;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -331,20 +343,48 @@
     const invoiceStatus = document.getElementById('invoiceStatus');
     invoiceStatus.value = status;
 
-    const fieldsToToggle = ['purchaseDate', 'receptionDate', 'sellerDropdown', 'cityDropdown'];
-    const formGroups = document.querySelectorAll('.form-group');
+    const purchaseDateField = document.getElementById('purchaseDate');
+    const receptionDateField = document.getElementById('receptionDate');
+    const customerDropdown = document.getElementById('customerDropdown');
+    const sellerDropdown = document.getElementById('sellerDropdown');
+    const cityDropdown = document.getElementById('cityDropdown');
 
-    if (status === 'en transit') {
-        fieldsToToggle.forEach(field => document.getElementById(field).removeAttribute('required'));
+    const formGroups = document.querySelectorAll('.form-group'); 
+
+    // Reset required fields and hide asterisks
+    purchaseDateField.removeAttribute('required');
+    receptionDateField.removeAttribute('required');
+    customerDropdown.removeAttribute('required');
+    sellerDropdown.removeAttribute('required');
+    cityDropdown.removeAttribute('required');
+    formGroups.forEach(group => group.classList.add('hide-required'));
+
+    // Set required fields and show asterisks based on status
+    if (status === 'incomplète') {
+        // No fields required, but at least one date should be filled
         formGroups.forEach(group => {
-            if (fieldsToToggle.includes(group.querySelector('input, select').id)) {
-                group.classList.add('hide-required');
+            if (group.querySelector('input, select').id === 'purchaseDate' || group.querySelector('input, select').id === 'receptionDate') {
+                group.classList.remove('hide-required');
             }
         });
-    } else {
-        fieldsToToggle.forEach(field => document.getElementById(field).setAttribute('required', 'required'));
+    } else if (status === 'en transit') {
+        purchaseDateField.setAttribute('required', 'required');
+        customerDropdown.setAttribute('required', 'required');
+        sellerDropdown.setAttribute('required', 'required');
+        cityDropdown.setAttribute('required', 'required');
         formGroups.forEach(group => {
-            if (fieldsToToggle.includes(group.querySelector('input, select').id)) {
+            if (['purchaseDate', 'customerDropdown', 'sellerDropdown', 'cityDropdown'].includes(group.querySelector('input, select').id)) {
+                group.classList.remove('hide-required');
+            }
+        });
+    } else if (status === 'enregistrée') {
+        purchaseDateField.setAttribute('required', 'required');
+        receptionDateField.setAttribute('required', 'required');
+        customerDropdown.setAttribute('required', 'required');
+        sellerDropdown.setAttribute('required', 'required');
+        cityDropdown.setAttribute('required', 'required');
+        formGroups.forEach(group => {
+            if (['purchaseDate', 'receptionDate', 'customerDropdown', 'sellerDropdown', 'cityDropdown'].includes(group.querySelector('input, select').id)) {
                 group.classList.remove('hide-required');
             }
         });
@@ -365,8 +405,7 @@
 
 
 
-
-        function validateRequiredFields() {
+    function validateRequiredFields() {
     const requiredFields = document.querySelectorAll('.tab-content.active [required]');
     let allFieldsValid = true;
 
@@ -476,6 +515,7 @@ function showPreviousTab() {
 }
 
         document.addEventListener('DOMContentLoaded', function () {
+            // setInvoiceStatus('enregistrée');
             Swal.fire({
                 width: '1000px',
                 heightAuto: false,
@@ -495,9 +535,8 @@ function showPreviousTab() {
                         <div class="toggle-container">
                             <button class="toggle-button active" id="option1" onclick="setInvoiceStatus('incomplète')">Incomplète</button>
                             <button class="toggle-button" id="option2" onclick="setInvoiceStatus('en transit')">En transit</button>
-                            <button class="toggle-button" id="option3" onclick="setInvoiceStatus('enregristrée')">Enregistrée</button>
+                            <button class="toggle-button" id="option3" onclick="setInvoiceStatus('enregistrée')">Enregistrée</button>
                         </div>
-
 
                     </div>
                 </div>
@@ -515,21 +554,30 @@ function showPreviousTab() {
                     <div class="tab-content" id="tab-2">
                         <div class="form-group">
                             <label for="customerDropdown" class="label-name">Acheteur <span class="required-field">*</span></label>
+                            <div class="addDropdownValue">
                             <select id="customerDropdown" required onchange="updateInvoiceDate()">
                                 <option value="" disabled selected>Choisir un acheteur...</option>
                             </select>
+                            <button type="button" class="add-button">+</button>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="sellerDropdown" class="label-name">Vendeur <span class="required-field">*</span></label>
+                            <div class="addDropdownValue">
                             <select id="sellerDropdown" required onchange="updateCities()">
                                 <option value="" disabled selected>Choisir un vendeur...</option>
                             </select>
+                            <button type="button" class="add-button">+</button>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="cityDropdown" class="label-name">Ville/Pays <span class="required-field">*</span></label>
+                            <div class="addDropdownValue">
                             <select id="cityDropdown" required>
                                 <option value="" disabled selected>Choisir une ville/pays...</option>
                             </select>
+                            <button type="button" class="add-button">+</button>
+                            </div>
                         </div>
                         <div class="form-group-invisible">
                             <label for="invoiceStatus" class="label-name">Statut facture :</label>
@@ -605,6 +653,7 @@ function showPreviousTab() {
                         });
                     });
                     showTabContent(0);
+                    setInvoiceStatus('enregistrée');
                 },
                 preConfirm: () => {
                     const invoiceNumber = document.getElementById('invoiceNumber').value;
