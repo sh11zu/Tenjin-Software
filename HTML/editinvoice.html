@@ -317,6 +317,11 @@
     color: white;
 }
 
+.inputField100 {
+    display: flex;
+    width: 100% !important;
+}
+
     </style>
 </head>
 
@@ -476,36 +481,13 @@ function showTabContent(tabIndex) {
         addReferencesButton.style.display = 'inline-block';
         updateRecapFields(); // Update recap fields when switching to the recap tab
     } else {
-        nextButton.textContent = 'Suivant';
+        nextButton.textContent = 'Enregistrer';
         nextButton.onclick = showNextTab;
         addReferencesButton.style.display = 'none';
     }
 
     // Clear the error message when moving to a different tab
     document.getElementById('errorMessage').textContent = '';
-}
-
-function confirmStatusChange(oldStatus, newStatus, callback) {
-    const confirmationModal = document.createElement('div');
-    confirmationModal.innerHTML = `
-        <div class="confirmation-modal">
-            <div class="confirmation-content">
-                <p>Changer le statut de la facture de ${oldStatus} à ${newStatus} ?</p>
-                <button id="confirmButton" class="confirm-button">Oui</button>
-                <button id="cancelButton" class="cancel-button">Non</button>
-            </div>
-        </div>
-    `;
-    document.body.appendChild(confirmationModal);
-
-    document.getElementById('confirmButton').onclick = () => {
-        document.body.removeChild(confirmationModal);
-        callback();
-    };
-
-    document.getElementById('cancelButton').onclick = () => {
-        document.body.removeChild(confirmationModal);
-    };
 }
 
 function showAlert(message, focusFieldId) {
@@ -720,109 +702,56 @@ function showPreviousTab() {
                 showConfirmButton: false,
                 html: `
                 <div class="container-title">
-                    <div class="swal2-title">Ajouter une nouvelle facture</div>
+                    <div class="swal2-title">Modifier une facture</div>
                 </div>
                 <div class="container-tabs">
                     <div class="tabs">
                         <div class="tabs-toggle">
-                         
-                            <div class="tab active" onclick="showTabContent(0)">Dates</div>
-                            <div class="tab disabled" onclick="showTabContent(1)">Acheteur et Vendeur</div>
-                            <div class="tab disabled" onclick="showTabContent(2)">Récapitulatif</div>
+                            <div class="tab active" onclick="showTabContent(0)">Facture</div>
                         </div>
-                        <div class="toggle-container">
-                            <button class="toggle-button" id="option1" onclick="setInvoiceStatus('incomplète')">Incomplète</button>
-                            <button class="toggle-button" id="option2" onclick="setInvoiceStatus('en transit')">En transit</button>
-                            <button class="toggle-button active" id="option3" onclick="setInvoiceStatus('enregistrée')">Enregistrée</button>
-                        </div>
-
                     </div>
                 </div>
                 <div class="tab-content-container">
-                    <div class="tab-content active" id="tab-1">
-                        <div class="form-group">
-                            <label for="purchaseDate" class="label-name">Date achat <span class="required-field">*</span></label>
-                            <input type="date" id="purchaseDate" name="purchaseDate" required onchange="updateInvoiceDate()">
-                        </div>
-                        <div class="form-group">
-                            <label for="receptionDate" class="label-name">Date réception <span class="required-field">*</span></label>
-                            <input type="date" id="receptionDate" name="receptionDate" required onchange="updateInvoiceDate()">
-                        </div>
-                    </div>
-                    <div class="tab-content" id="tab-2">
-                        <div class="form-group">
-                            <label for="customerDropdown" class="label-name">Acheteur <span class="required-field">*</span></label>
-                            <div class="addDropdownValue">
-                            <select id="customerDropdown" required onchange="updateInvoiceDate()">
-                                <option value="" disabled selected>Choisir un acheteur...</option>
-                            </select>
-                            <button type="button" id="addCustomerButton" class="add-button">+</button>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="sellerDropdown" class="label-name">Vendeur <span class="required-field">*</span></label>
-                            <div class="addDropdownValue">
-                            <select id="sellerDropdown" required onchange="updateCities()">
-                                <option value="" disabled selected>Choisir un vendeur...</option>
-                            </select>
-                            <button type="button" class="add-button">+</button>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="cityDropdown" class="label-name">Ville/Pays <span class="required-field">*</span></label>
-                            <div class="addDropdownValue">
-                            <select id="cityDropdown" required>
-                                <option value="" disabled selected>Choisir une ville/pays...</option>
-                            </select>
-                            <button type="button" class="add-button">+</button>
-                            </div>
-                        </div>
-                        <div class="form-group-invisible">
-                            <label for="invoiceStatus" class="label-name">Statut facture :</label>
-                            <input type="text" id="invoiceStatus" name="invoiceStatus" value="enregistrée" readonly>
-                        </div>
-                        
-                    </div>
-                    <div class="tab-content" id="tab-3">
+                    <div class="tab-content" id="tab-1">
                         <div class="row">
                             <div class="column">
                                 <div class="form-group">
                                     <label for="invoiceNumber" class="label-name">N° Facture</label>
-                                    <input type="text" id="invoiceNumber" name="invoiceNumber" value="F" readonly required>
+                                    <input type="text" id="invoiceNumber" class="inputField100" name="invoiceNumber" value="F" readonly required>
                                 </div>
                                 <div class="form-group">
                                     <label for="invoiceDate" class="label-name">Date Facture</label>
-                                    <input type="date" id="invoiceDate" name="invoiceDate" readonly required>
+                                    <input type="date" id="invoiceDate" class="inputField100" name="invoiceDate" readonly required>
                                 </div>
                                 <div class="form-group">
                                     <label for="monthlyPayment" class="label-name">Mensualité</label>
-                                    <input type="text" id="monthlyPayment" name="monthlyPayment" readonly required>
+                                    <input type="text" id="monthlyPayment" class="inputField100" name="monthlyPayment" readonly required>
                                 </div>
                                 <div class="form-group">
                                     <label>Acheteur</label>
-                                    <input type="text" id="recapCustomer" readonly>
+                                    <input type="text" id="recapCustomer" class="inputField100" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label>Vendeur</label>
-                                    <input type="text" id="recapSeller" readonly>
+                                    <input type="text" id="recapSeller" class="inputField100" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label>Ville/Pays</label>
-                                    <input type="text" id="recapCity" readonly>
+                                    <input type="text" id="recapCity" class="inputField100" readonly>
                                 </div>
                             </div>
                             <div class="column">
                                 <div class="form-group">
                                     <label>Statut facture</label>
-                                    <input type="text" id="recapInvoiceStatus" readonly>
+                                    <input type="text" id="recapInvoiceStatus" class="inputField100" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label>Date achat</label>
-                                    <input type="date" id="recapPurchaseDate" readonly>
+                                    <input type="date" id="recapPurchaseDate" class="inputField100" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label>Date réception</label>
-                                    <input type="date" id="recapReceptionDate" readonly>
+                                    <input type="date" id="recapReceptionDate" class="inputField100" readonly>
                                 </div>
                             </div>
                         </div>
@@ -835,7 +764,7 @@ function showPreviousTab() {
                         </div>
                         <div class="button-group right">
                             <button type="button" class="swal2-cancel swal2-styled" id="prevButton" onclick="showPreviousTab()">Précédent</button>
-                            <button type="button" class="swal2-confirm swal2-styled" id="nextButton" onclick="showNextTab()">Suivant</button>
+                            <button type="button" class="swal2-confirm swal2-styled" id="nextButton" onclick="showNextTab()">Enregistrer</button>
                         </div>
                     </div>
                     <div id="errorMessage" class="error-message"></div>  

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Éléments</title>
+    <!-- Inclure la bibliothèque SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .swal2-html-container {
+            text-align: left;
+        }
+        button {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gestion des Éléments</h1>
+    <button data-element="serie" data-name="de la série">Supprimer la série</button>
+    <button data-element="facture" data-name="de la facture">Supprimer la facture</button>
+    <button data-element="editeur" data-name="de l'éditeur">Supprimer l'éditeur</button>
+    <button data-element="acheteur" data-name="de l'acheteur">Supprimer l'acheteur</button>
+    <button data-element="pointDeVente" data-name="du point de vente">Supprimer le point de vente</button>
+    <button data-element="auteur" data-name="de l'auteur">Supprimer l'auteur</button>
+
+    <script>
+        function showConfirmationDialog(element, displayName) {
+            const elementNames = {
+                serie: "<strong>Nom de la Série en Gras</strong>",
+                facture: "<strong>Numéro de la Facture en Gras</strong>",
+                editeur: "<strong>Nom de l'Éditeur en Gras</strong>",
+                acheteur: "<strong>Nom de l'Acheteur en Gras</strong>",
+                pointDeVente: "<strong>Nom du Point de Vente en Gras</strong>",
+                auteur: "<strong>Nom de l'Auteur en Gras</strong>"
+            };
+            const elementText = elementNames[element];
+            Swal.fire({
+                title: 'Êtes-vous sûr ?',
+                html: `Confirmez-vous la suppression ${displayName} :<br>${elementText}`,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Oui, supprimer !',
+                cancelButtonText: 'Annuler',
+                customClass: {
+                    htmlContainer: 'swal2-html-container'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Supprimé !',
+                        `L'élément ${elementText} a été supprimé.`,
+                        'success'
+                    )
+                }
+            });
+        }
+
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                const element = button.getAttribute('data-element');
+                const displayName = button.getAttribute('data-name');
+                showConfirmationDialog(element, displayName);
+            });
+        });
+    </script>
+</body>
+</html>

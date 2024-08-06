@@ -1,0 +1,329 @@
+.swal2-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swal2-popup {
+    width: 1000px !important;
+    height: 500px !important;
+}
+
+.tabs {
+    display: flex;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 10px;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.tab {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    background: #f1f1f1;
+    margin-right: 5px;
+    border-radius: 5px 5px 0 0;
+}
+
+.tab.active {
+    background: #fff;
+    font-weight: bold;
+}
+
+.tab.disabled {
+    cursor: not-allowed;
+    color: #ccc;
+    pointer-events: none;
+}
+
+.swal2-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.tab-content-container {
+    height: calc(100% - 160px);
+    overflow-y: auto;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+}
+
+.tab-content {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 0 5px 5px 5px;
+    background: #fff;
+    display: none;
+    margin-top: 0;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tabs-toggle {
+    display: flex;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.form-group-invisible {
+    display: none;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-align: left;
+    display: block;
+}
+
+.form-group input,
+.form-group select {
+    width: calc(100% - 50px);
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    appearance: none;
+    text-align: left;
+}
+
+.toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-button {
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 25px;
+    background-color: #fff;
+    color: #000;
+    transition: background-color 0.3s, color 0.3s;
+    outline: none;
+    font-size: 15px;
+}
+
+.toggle-button.active {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.toggle-button:hover {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.plus-button {
+    padding: 8px 16px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 5px;
+    font-size: 16px;
+}
+
+.plus-button:hover {
+    background-color: #45a049;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #4caf50;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.custom-textbox {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    font-family: inherit;
+    text-align: left;
+}
+
+.label-name {
+    text-align: left;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.button-group {
+    display: flex;
+}
+
+.button-group.right {
+    justify-content: flex-end;
+    margin-left: auto;
+}
+
+.button-group.left {
+    justify-content: flex-start;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    margin-right: 5%;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-title {
+    margin-bottom: 30px;
+}
+
+.container-tabs {
+    margin-bottom: 0px;
+}
+
+.container-button {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.hide-required .required-field {
+    display: none;
+}
+
+.error {
+    border: 2px solid red !important;
+}
+
+.error.blue {
+    border: 2px solid blue !important;
+}
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+    text-align: right;
+}
+
+.error-message.blue {
+color: blue;
+}
+
+
+.addDropdownValue {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.add-button {
+    width: 40px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+
+
+
+
+.confirmation-modal {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+background: rgba(0, 0, 0, 0.5);
+z-index: 10000;
+}
+
+.confirmation-content {
+background: white;
+padding: 20px;
+border-radius: 10px;
+text-align: center;
+}
+
+.confirm-button, .cancel-button {
+margin: 10px;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.confirm-button {
+background-color: #4caf50;
+color: white;
+}
+
+.cancel-button {
+background-color: #f44336;
+color: white;
+}
+
+.inputField100 {
+display: flex;
+width: 100% !important;
+}
+
+.serie-name-cont {
+display: flex;
+}
+
+.inputFieldF70 {
+display: flex;
+flex-direction: column;
+width: 80%;
+}
+
+.inputFieldF30 {
+display: flex;
+flex-direction: column;
+width: 20%;
+}
